@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EFE4D2"
+    tools:context=".Vista.login">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="409dp"
+        android:layout_height="732dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:visibility="visible"
+
+        android:alpha="0.4"  app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logologin"
+        tools:visibility="visible" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="313dp"
+        android:layout_height="439dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="17dp"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="390dp"
+            android:background="#00FFFFFF">
+
+            <EditText
+                android:id="@+id/edtUsuario"
+                android:layout_width="234dp"
+                android:layout_height="51dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="71dp"
+                android:ems="10"
+                android:hint="@string/txtUsuario"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.551"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtRegistrar"
+                android:layout_width="232dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="24dp"
+                android:clickable="true"
+                android:text="@string/txtRagistrar"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/btnAcceder"
+                app:layout_constraintHorizontal_bias="0.375"
+                app:layout_constraintStart_toStartOf="@+id/btnAcceder"
+                app:layout_constraintTop_toBottomOf="@+id/btnAcceder" />
+
+            <Button
+                android:id="@+id/btnAcceder"
+                android:layout_width="240dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="52dp"
+                android:text="@string/btnAcceder"
+                app:layout_constraintEnd_toEndOf="@+id/edtpassword"
+                app:layout_constraintHorizontal_bias="0.666"
+                app:layout_constraintStart_toStartOf="@+id/edtpassword"
+                app:layout_constraintTop_toBottomOf="@+id/edtpassword" />
+
+            <EditText
+                android:id="@+id/edtpassword"
+                android:layout_width="234dp"
+                android:layout_height="51dp"
+                android:layout_marginTop="68dp"
+                android:ems="10"
+                android:hint="@string/txtPassword"
+                android:inputType="textPassword"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toEndOf="@+id/edtUsuario"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/edtUsuario"
+                app:layout_constraintTop_toBottomOf="@+id/edtUsuario" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

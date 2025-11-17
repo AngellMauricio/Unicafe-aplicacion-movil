@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EFE4D2"
+    tools:context=".Vista.registro">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="371dp"
+        android:layout_height="159dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="46dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.607"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logoapp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="383dp"
+        android:layout_height="406dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#EFE4D2"
+            android:visibility="visible">
+
+            <EditText
+                android:id="@+id/edtUNombre"
+                android:layout_width="341dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="83dp"
+                android:layout_marginTop="42dp"
+                android:layout_marginEnd="89dp"
+                android:ems="10"
+                android:hint="@string/txtUNombre"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/edtCorreo"
+                android:layout_width="341dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                android:ems="10"
+                android:hint="@string/txtCorreo"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toEndOf="@+id/edtUNombre"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/edtUNombre"
+                app:layout_constraintTop_toBottomOf="@+id/edtUNombre" />
+
+            <EditText
+                android:id="@+id/edtPass"
+                android:layout_width="341dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                android:ems="10"
+                android:hint="@string/txtpass"
+                android:inputType="textPassword"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toEndOf="@+id/edtCorreo"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/edtCorreo"
+                app:layout_constraintTop_toBottomOf="@+id/edtCorreo" />
+
+            <Button
+                android:id="@+id/btnRegistrar"
+                android:layout_width="320dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/btnRegistrar"
+                app:layout_constraintEnd_toEndOf="@+id/edtPass"
+                app:layout_constraintHorizontal_bias="0.619"
+                app:layout_constraintStart_toStartOf="@+id/edtPass"
+                app:layout_constraintTop_toBottomOf="@+id/edtPass" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

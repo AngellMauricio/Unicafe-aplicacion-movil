@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">unicafe</string>
+    <string name="btnAcceder">Acceder</string>
+    <string name="txtPassword">Contraseña</string>
+    <string name="txtRagistrar">Registrar</string>
+    <string name="txtUsuario">correo</string>
+    <string name="txtUNombre">Nombre de usuario</string>
+    <string name="txtCorreo">Correo electrónico</string>
+    <string name="txtpass">Contraseña</string>
+    <string name="btnRegistrar">Registrar</string>
+</resources>
