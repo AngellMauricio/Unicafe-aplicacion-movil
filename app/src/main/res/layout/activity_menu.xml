@@ -21,8 +21,8 @@
 
     <Button
         android:id="@+id/btnPedidos"
-        android:layout_width="137dp"
-        android:layout_height="51dp"
+        android:layout_width="143dp"
+        android:layout_height="54dp"
         android:layout_marginTop="24dp"
         android:backgroundTint="#6D4C41"
         android:text="@string/btnPedidos"
@@ -46,7 +46,7 @@
         app:layout_constraintHorizontal_bias="0.822"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.018" />
 
     <ImageView
         android:id="@+id/imageView4"
