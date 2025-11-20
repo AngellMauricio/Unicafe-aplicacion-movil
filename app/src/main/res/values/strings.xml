@@ -10,5 +10,7 @@
     <string name="btnRegistrar">Registrar</string>
     <string name="btnRefrescar">Refrescar</string>
     <string name="btnPedidos">Pedidos</string>
-    <string name="txtComidas">Comidas</string>
+    <string name="txtMenu">MENÚ</string>
+    <string name="txtHistorial">HISTORIAL</string>
+    <string name="txtComidas">COMIDAS</string>
 </resources>
