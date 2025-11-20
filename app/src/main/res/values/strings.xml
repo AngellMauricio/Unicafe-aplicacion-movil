@@ -8,4 +8,5 @@
     <string name="txtCorreo">Correo electrónico</string>
     <string name="txtpass">Contraseña</string>
     <string name="btnRegistrar">Registrar</string>
+    <string name="btnRefrescar">Refrescar</string>
 </resources>
