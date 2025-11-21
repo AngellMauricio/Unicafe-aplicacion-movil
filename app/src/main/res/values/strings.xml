@@ -14,9 +14,9 @@
     <string name="txtHistorial">HISTORIAL</string>
     <string name="txtComidas">COMIDAS</string>
     <string name="txtPedidos">PEDIDOS</string>
-    <string name="edtNombreProducto">Nombre del producto</string>
-    <string name="edtPrecioProducto">Precio</string>
-    <string name="edtDescripcionProducto">Descripción</string>
+    <string name="edtNombreP">Nombre del producto</string>
+    <string name="edtPrecioP">Precio</string>
+    <string name="edtDescripcion">Descripción</string>
     <string name="btnAgregar">Agregar</string>
     <string name="btnDestacar">Destacar</string>
 </resources>
