@@ -10,6 +10,12 @@
     <string name="btnRegistrar">Registrar</string>
     <string name="btnRefrescar">Refrescar</string>
     <string name="btnPedidos">Pedidos</string>
+    <string name="txtNombre">Nombre de Comida</string>
+    <string name="txtPrecio">Precio</string>
+    <string name="txtDescripcion">Descripción</string>
+    <string name="btnAgregar">Agregar</string>
+    <string name="btnEliminar">Eliminar</string>
+    <string name="btnActualizar">Actrualizar</string>
     <string name="txtMenu">MENÚ</string>
     <string name="txtHistorial">HISTORIAL</string>
     <string name="txtComidas">COMIDAS</string>
