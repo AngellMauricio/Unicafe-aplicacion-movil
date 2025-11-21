@@ -3,26 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#BCAAA4">
 
     <TextView
         android:id="@+id/txtModificar"
         android:layout_width="163dp"
         android:layout_height="44dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="64dp"
         android:text="Modificar CRUD"
+        android:textColor="#000000"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/edtNombre"
-        android:layout_width="274dp"
-        android:layout_height="42dp"
+        android:layout_width="276dp"
+        android:layout_height="50dp"
         android:layout_marginTop="36dp"
         android:ems="10"
         android:hint="@string/txtNombre"
         android:inputType="text"
+        android:textColor="#525050"
         app:layout_constraintEnd_toEndOf="@+id/txtModificar"
         app:layout_constraintHorizontal_bias="0.419"
         app:layout_constraintStart_toStartOf="@+id/txtModificar"
@@ -30,8 +34,8 @@
 
     <EditText
         android:id="@+id/edtPrecio"
-        android:layout_width="277dp"
-        android:layout_height="48dp"
+        android:layout_width="275dp"
+        android:layout_height="49dp"
         android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="@string/txtPrecio"
@@ -43,9 +47,10 @@
 
     <EditText
         android:id="@+id/edtDescripcion"
-        android:layout_width="274dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="278dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#4B4343"
         android:ems="10"
         android:hint="@string/txtDescripcion"
         android:inputType="text"
@@ -59,7 +64,7 @@
         android:layout_width="80dp"
         android:layout_height="24dp"
         android:layout_marginTop="44dp"
-        android:text="Imagen"
+        android:text="Producto"
         app:layout_constraintEnd_toEndOf="@+id/edtDescripcion"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/edtDescripcion"
@@ -70,6 +75,7 @@
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginTop="44dp"
+        android:backgroundTint="#6D4C41"
         android:text="Agregar"
         app:layout_constraintEnd_toEndOf="@+id/txtImagen"
         app:layout_constraintHorizontal_bias="0.457"
@@ -81,17 +87,19 @@
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginTop="112dp"
+        android:backgroundTint="#6D4C41"
         android:text="Eliminar"
         app:layout_constraintEnd_toStartOf="@+id/btnActualizar"
-        app:layout_constraintHorizontal_bias="0.908"
+        app:layout_constraintHorizontal_bias="0.927"
         app:layout_constraintStart_toStartOf="@+id/btnAgregar"
         app:layout_constraintTop_toBottomOf="@+id/edtDescripcion" />
 
     <Button
         android:id="@+id/btnActualizar"
-        android:layout_width="117dp"
-        android:layout_height="49dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_marginTop="112dp"
+        android:backgroundTint="#6D4C41"
         android:text="Actualizar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.945"
@@ -99,9 +107,22 @@
         app:layout_constraintTop_toBottomOf="@id/edtDescripcion" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="384dp"
-        android:layout_height="184dp"
-        tools:layout_editor_absoluteX="12dp"
-        tools:layout_editor_absoluteY="530dp" />
+        android:layout_width="380dp"
+        android:layout_height="177dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnEliminar" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="141dp"
+        android:layout_height="109dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/edtDescripcion"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/edtDescripcion"
+        app:layout_constraintTop_toBottomOf="@+id/edtDescripcion"
+        app:srcCompat="@drawable/img2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
