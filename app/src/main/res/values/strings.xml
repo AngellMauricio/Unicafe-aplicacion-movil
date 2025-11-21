@@ -11,7 +11,7 @@
     <string name="btnRefrescar">Refrescar</string>
     <string name="btnPedidos">Pedidos</string>
     <string name="txtComidas">Comidas</string>
-    <string name="txtNombre">Nombre</string>
+    <string name="txtNombre">Nombre de Comida</string>
     <string name="txtPrecio">Precio</string>
     <string name="txtDescripcion">Descripción</string>
     <string name="btnAgregar">Agregar</string>
