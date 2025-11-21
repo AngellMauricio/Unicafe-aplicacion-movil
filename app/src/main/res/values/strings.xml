@@ -8,21 +8,9 @@
     <string name="txtCorreo">Correo electrónico</string>
     <string name="txtpass">Contraseña</string>
     <string name="btnRegistrar">Registrar</string>
+    <string name="btnRefrescar">Refrescar</string>
+    <string name="btnPedidos">Pedidos</string>
     <string name="txtMenu">MENÚ</string>
     <string name="txtHistorial">HISTORIAL</string>
-    <string name="btnRefrescar">Refrescar</string>
-    <string name="txtPedidos">PEDIDOS</string>
-    <string name="btnDestacar">Destacar</string>
-    <string name="btnPedidos">Pedidos</string>
-    <string name="edtNombre">Nombre</string>
-    <string name="edtPrecio">Precio</string>
-    <string name="edtDescripcion">Descripcion</string>
-    <string name="txtComidas">Comidas</string>
-    <string name="txtNombre">Nombre de Comidas</string>
-    <string name="txtPrecio">Precio</string>
-    <string name="txtDescripcion">Descripción</string>
-    <string name="btnAgregar">Agregar</string>
-    <string name="btnEliminar">Eliminar</string>
-    <string name="btnActualizar">Actualizar</string>
-
+    <string name="txtComidas">COMIDAS</string>
 </resources>
