@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#BCAAA4">
+
+    <TextView
+        android:id="@+id/txtPedidos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/txtPedidos"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/edtNombreProducto"
+        app:layout_constraintEnd_toEndOf="@+id/edtNombreProducto"
+        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintStart_toStartOf="@+id/edtNombreProducto"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.225" />
+
+    <EditText
+        android:id="@+id/edtDescripcionProducto"
+        android:layout_width="227dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="44dp"
+        android:ems="10"
+        android:hint="@string/edtDescripcionProducto"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/btnAgregar"
+        app:layout_constraintEnd_toEndOf="@+id/btnDestacar"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="@+id/btnAgregar" />
+
+    <EditText
+        android:id="@+id/edtPrecioProducto"
+        android:layout_width="227dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:hint="@string/edtPrecioProducto"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/edtDescripcionProducto"
+        app:layout_constraintEnd_toEndOf="@+id/edtDescripcionProducto"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edtDescripcionProducto" />
+
+    <EditText
+        android:id="@+id/edtNombreProducto"
+        android:layout_width="227dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:hint="@string/edtNombreProducto"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/edtPrecioProducto"
+        app:layout_constraintEnd_toEndOf="@+id/edtPrecioProducto"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edtPrecioProducto" />
+
+    <Button
+        android:id="@+id/btnAgregar"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginBottom="292dp"
+        android:backgroundTint="#6D4C41"
+        android:text="@string/btnAgregar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnDestacar"
+        app:layout_constraintHorizontal_bias="0.237"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnDestacar"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginBottom="292dp"
+        android:backgroundTint="#6D4C41"
+        android:text="@string/btnDestacar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cdvMostrarPedidos"
+        android:layout_width="352dp"
+        android:layout_height="208dp"
+        android:layout_marginBottom="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
