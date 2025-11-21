@@ -20,4 +20,11 @@
     <string name="txtHistorial">HISTORIAL</string>
     <string name="txtComidas">COMIDAS</string>
     <string name="txtDescripcionImg">Descripcion de la imagen </string>
+    <string name="edtNombre">Nombre del producto</string>
+    <string name="edtPrecio">Precio</string>
+    <string name="edtDescripcion">Descripción</string>
+    <string name="btnAgregarr">Agregar</string>
+    <string name="btnDestacar">Destacar</string>
+    <string name="txtPedidos">Pedidos</string>
+
 </resources>
