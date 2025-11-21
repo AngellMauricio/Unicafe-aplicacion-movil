@@ -13,4 +13,5 @@
     <string name="txtMenu">MENÚ</string>
     <string name="txtHistorial">HISTORIAL</string>
     <string name="txtComidas">COMIDAS</string>
+    <string name="txtDescripcionImg">Descripcion de la imagen </string>
 </resources>
