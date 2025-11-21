@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EFE4D2"
+    android:background="#BCAAA4"
     tools:context=".Vista.registro">
 
     <ImageView
@@ -37,7 +37,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#EFE4D2"
+            android:background="#BCAAA4"
             android:visibility="visible">
 
             <EditText
@@ -94,6 +94,7 @@
                 android:layout_width="320dp"
                 android:layout_height="52dp"
                 android:layout_marginTop="32dp"
+                android:backgroundTint="#6D4C41"
                 android:text="@string/btnRegistrar"
                 app:layout_constraintEnd_toEndOf="@+id/edtPass"
                 app:layout_constraintHorizontal_bias="0.619"
