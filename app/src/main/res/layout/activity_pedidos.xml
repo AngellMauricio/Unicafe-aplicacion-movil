@@ -14,15 +14,15 @@
         android:text="@string/txtPedidos"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/edtNombreProducto"
-        app:layout_constraintEnd_toEndOf="@+id/edtNombreProducto"
+        app:layout_constraintBottom_toTopOf="@+id/edtNombreP"
+        app:layout_constraintEnd_toEndOf="@+id/edtNombreP"
         app:layout_constraintHorizontal_bias="0.448"
-        app:layout_constraintStart_toStartOf="@+id/edtNombreProducto"
+        app:layout_constraintStart_toStartOf="@+id/edtNombreP"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.225" />
 
     <EditText
-        android:id="@+id/edtDescripcionProducto"
+        android:id="@+id/edtDescripcion"
         android:layout_width="227dp"
         android:layout_height="60dp"
         android:layout_marginBottom="44dp"
@@ -35,30 +35,30 @@
         app:layout_constraintStart_toStartOf="@+id/btnAgregar" />
 
     <EditText
-        android:id="@+id/edtPrecioProducto"
+        android:id="@+id/edtPrecioP"
         android:layout_width="227dp"
         android:layout_height="60dp"
         android:layout_marginBottom="24dp"
         android:ems="10"
         android:hint="@string/edtPrecioProducto"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/edtDescripcionProducto"
-        app:layout_constraintEnd_toEndOf="@+id/edtDescripcionProducto"
+        app:layout_constraintBottom_toTopOf="@+id/edtDescripcion"
+        app:layout_constraintEnd_toEndOf="@+id/edtDescripcion"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/edtDescripcionProducto" />
+        app:layout_constraintStart_toStartOf="@+id/edtDescripcion" />
 
     <EditText
-        android:id="@+id/edtNombreProducto"
+        android:id="@+id/edtNombreP"
         android:layout_width="227dp"
         android:layout_height="60dp"
         android:layout_marginBottom="24dp"
         android:ems="10"
         android:hint="@string/edtNombreProducto"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/edtPrecioProducto"
-        app:layout_constraintEnd_toEndOf="@+id/edtPrecioProducto"
+        app:layout_constraintBottom_toTopOf="@+id/edtPrecioP"
+        app:layout_constraintEnd_toEndOf="@+id/edtPrecioP"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/edtPrecioProducto" />
+        app:layout_constraintStart_toStartOf="@+id/edtPrecioP" />
 
     <Button
         android:id="@+id/btnAgregar"
