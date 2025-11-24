@@ -8,9 +8,9 @@
 
     <TextView
         android:id="@+id/txtModificar"
-        android:layout_width="199dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:text="Modificar Producto"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -21,12 +21,13 @@
     <EditText
         android:id="@+id/edtNombre"
         android:layout_width="276dp"
-        android:layout_height="50dp"
+        android:layout_height="48dp"
         android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="@string/txtNombre"
         android:inputType="text"
         android:textColor="#525050"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/txtModificar"
         app:layout_constraintHorizontal_bias="0.519"
         app:layout_constraintStart_toStartOf="@+id/txtModificar"
@@ -35,25 +36,27 @@
     <EditText
         android:id="@+id/edtPrecio"
         android:layout_width="275dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="@string/txtPrecio"
         android:inputType="text"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/edtNombre"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/edtNombre"
         app:layout_constraintTop_toBottomOf="@id/edtNombre" />
 
     <EditText
         android:id="@+id/edtDescripcion"
         android:layout_width="278dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
         android:backgroundTint="#4B4343"
         android:ems="10"
         android:hint="@string/txtDescripcion"
         android:inputType="text"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/edtPrecio"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/edtPrecio"
@@ -62,45 +65,46 @@
     <TextView
         android:id="@+id/txtImagen"
         android:layout_width="117dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="32dp"
-        android:text="Imgane Producto"
+        android:layout_height="40dp"
+        android:layout_marginTop="28dp"
+        android:text="Imagen Producto"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/edtDescripcion"
-        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/edtDescripcion"
         app:layout_constraintTop_toBottomOf="@+id/edtDescripcion" />
-
-    <Button
-        android:id="@+id/btnAgregar"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="76dp"
-        android:backgroundTint="#6D4C41"
-        android:text="Agregar"
-        app:layout_constraintEnd_toEndOf="@+id/txtImagen"
-        app:layout_constraintHorizontal_bias="0.213"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtImagen" />
 
     <Button
         android:id="@+id/btnEliminar"
         android:layout_width="120dp"
         android:layout_height="50dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="192dp"
         android:backgroundTint="#6D4C41"
-        android:text="Eliminar"
+        android:text="@string/btnEliminar"
         app:layout_constraintEnd_toStartOf="@+id/btnActualizar"
         app:layout_constraintHorizontal_bias="0.928"
         app:layout_constraintStart_toStartOf="@+id/btnAgregar"
         app:layout_constraintTop_toBottomOf="@+id/edtDescripcion" />
 
     <Button
+        android:id="@+id/btnAgregar"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="48dp"
+        android:backgroundTint="#6D4C41"
+        android:text="@string/btnAgregarr"
+        app:layout_constraintEnd_toEndOf="@+id/txtImagen"
+        app:layout_constraintHorizontal_bias="0.266"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <Button
         android:id="@+id/btnActualizar"
         android:layout_width="120dp"
         android:layout_height="50dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="192dp"
         android:backgroundTint="#6D4C41"
-        android:text="Actualizar"
+        android:text="@string/btnActualizar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.945"
         app:layout_constraintStart_toStartOf="parent"
@@ -117,8 +121,8 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="139dp"
-        android:layout_height="127dp"
+        android:layout_width="157dp"
+        android:layout_height="145dp"
         android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="@+id/edtDescripcion"
         app:layout_constraintHorizontal_bias="1.0"
@@ -139,5 +143,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="4dp"
+        android:backgroundTint="#6D4C41"
+        android:text="@string/btnAddImg"
+        app:layout_constraintEnd_toStartOf="@+id/imageView5"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/txtImagen"
+        app:layout_constraintTop_toBottomOf="@+id/txtImagen" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
