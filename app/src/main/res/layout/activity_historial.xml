@@ -10,7 +10,7 @@
         android:id="@+id/btnRefrescar"
         android:layout_width="154dp"
         android:layout_height="54dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="76dp"
         android:backgroundTint="#6D4C41"
         android:text="@string/btnRefrescar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,7 +22,7 @@
         android:id="@+id/txtHistorial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="92dp"
         android:text="@string/txtHistorial"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -35,7 +35,9 @@
         android:id="@+id/cdvHistorial"
         android:layout_width="343dp"
         android:layout_height="476dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="113dp"
         app:cardBackgroundColor="#EFE4D2"
         app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -60,5 +62,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnHacerPedido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="36dp"
+        android:backgroundTint="#6D4C41"
+        android:text="@string/btnRealizarPedido"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cdvHistorial" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
