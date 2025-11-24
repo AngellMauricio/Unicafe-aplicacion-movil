@@ -26,5 +26,6 @@
     <string name="btnAgregarr">Agregar</string>
     <string name="btnDestacar">Destacar</string>
     <string name="txtPedidos">Pedidos</string>
+    <string name="btnPedido">Pedido</string>
 
 </resources>
