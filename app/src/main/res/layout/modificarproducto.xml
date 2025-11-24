@@ -10,7 +10,7 @@
         android:id="@+id/txtModificar"
         android:layout_width="199dp"
         android:layout_height="40dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="80dp"
         android:text="Modificar Producto"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -22,13 +22,13 @@
         android:id="@+id/edtNombre"
         android:layout_width="276dp"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="@string/txtNombre"
         android:inputType="text"
         android:textColor="#525050"
         app:layout_constraintEnd_toEndOf="@+id/txtModificar"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintHorizontal_bias="0.519"
         app:layout_constraintStart_toStartOf="@+id/txtModificar"
         app:layout_constraintTop_toBottomOf="@+id/txtModificar" />
 
@@ -125,5 +125,19 @@
         app:layout_constraintStart_toStartOf="@+id/edtDescripcion"
         app:layout_constraintTop_toBottomOf="@+id/edtDescripcion"
         app:srcCompat="@drawable/img2" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="405dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="4dp"
+        android:background="#8C6844"
+        android:text="UNICAFE"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
