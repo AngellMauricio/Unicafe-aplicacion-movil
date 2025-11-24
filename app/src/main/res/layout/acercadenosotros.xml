@@ -10,12 +10,11 @@
         android:id="@+id/textView"
         android:layout_width="219dp"
         android:layout_height="45dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="84dp"
         android:text="Acerca de Nosotros"
         android:textColor="#0B0B0B"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.572"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -97,5 +96,19 @@
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
         app:srcCompat="@drawable/img3" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="405dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="4dp"
+        android:background="#8C6844"
+        android:text="UNICAFE"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
