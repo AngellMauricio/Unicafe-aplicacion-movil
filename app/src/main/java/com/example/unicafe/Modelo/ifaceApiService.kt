@@ -10,8 +10,8 @@ import retrofit2.http.POST
 
 
 interface ifaceApiService {
-    @GET("apiPeliculas.php")
-    fun obtenerPeliculas(): Call<List<bdunicafe>>
+    //@GET("apiPeliculas.php")
+    //fun obtenerPeliculas(): Call<List<bdunicafe>>
 
     //Para login y registro
     @FormUrlEncoded
