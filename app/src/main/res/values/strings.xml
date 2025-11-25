@@ -8,7 +8,6 @@
     <string name="txtCorreo">Correo electrónico</string>
     <string name="txtpass">Contraseña</string>
     <string name="btnRegistrar">Registrar</string>
-    <string name="btnRefrescar">Refrescar</string>
     <string name="btnPedidos">Pedidos</string>
     <string name="txtNombre">Nombre de Comida</string>
     <string name="txtPrecio">Precio</string>
@@ -26,7 +25,7 @@
     <string name="btnAgregarr">Agregar</string>
     <string name="btnDestacar">Destacar</string>
     <string name="txtPedidos">Pedidos</string>
-    <string name="btnRealizarPedido">Realizar pedido</string>
     <string name="btnAddImg">Agregar Imagen</string>
+    <string name="btnRealizarPedido">Realizar Pedido</string>
 
 </resources>
