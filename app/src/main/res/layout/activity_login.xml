@@ -10,33 +10,40 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="409dp"
-        android:layout_height="732dp"
+        android:layout_width="408dp"
+        android:layout_height="249dp"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
-        android:alpha="0.4"
 
+        android:adjustViewBounds="false"
         android:background="#EFE4D2"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="0dp"
+        android:scaleType="centerCrop"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logologin"
+        app:layout_constraintVertical_bias="0.991"
+        app:srcCompat="@drawable/tazalogin"
         tools:visibility="visible" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="313dp"
-        android:layout_height="439dp"
+        android:layout_width="312dp"
+        android:layout_height="412dp"
         android:layout_marginStart="18dp"
         android:layout_marginEnd="17dp"
         app:cardBackgroundColor="#00FFFFFF"
         app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.208">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -110,7 +117,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/txtTitulo"
         android:layout_width="405dp"
         android:layout_height="49dp"
         android:layout_marginTop="4dp"
