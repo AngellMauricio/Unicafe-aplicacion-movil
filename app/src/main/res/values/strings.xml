@@ -27,6 +27,5 @@
     <string name="txtPedidos">Pedidos</string>
     <string name="btnAddImg">Agregar Imagen</string>
     <string name="btnRealizarPedido">Realizar Pedido</string>
-    <string name="btnOrdenar">Ordenar</string>
 
 </resources>
