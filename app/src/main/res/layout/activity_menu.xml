@@ -22,8 +22,8 @@
 
     <Button
         android:id="@+id/btnPedidos"
-        android:layout_width="137dp"
-        android:layout_height="51dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_marginTop="24dp"
         android:backgroundTint="#6D4C41"
         android:text="@string/btnPedidos"
@@ -84,11 +84,11 @@
         android:layout_width="121dp"
         android:layout_height="39dp"
         android:layout_marginStart="56dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="104dp"
         android:text="@string/txtDescripcionImg"
         app:layout_constraintBottom_toTopOf="@+id/imageView8"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.016"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView4" />
 
     <TextView
@@ -126,4 +126,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="228dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="35dp"
+        android:backgroundTint="#6D4C41"
+        android:text="Ordenar"
+        app:layout_constraintBottom_toTopOf="@+id/imageView8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescripcionImg" />
 </androidx.constraintlayout.widget.ConstraintLayout>
