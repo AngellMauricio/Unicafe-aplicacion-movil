@@ -6,29 +6,16 @@
     android:layout_height="match_parent"
     android:background="#EFE4D2">
 
-    <Button
-        android:id="@+id/btnRefrescar"
-        android:layout_width="154dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="76dp"
-        android:backgroundTint="#6D4C41"
-        android:text="@string/btnRefrescar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.132"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/txtHistorial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="92dp"
+        android:layout_marginEnd="152dp"
         android:text="@string/txtHistorial"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.441"
-        app:layout_constraintStart_toEndOf="@+id/btnRefrescar"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
@@ -64,16 +51,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnHacerPedido"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="36dp"
+        android:id="@+id/button3"
+        android:layout_width="126dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="12dp"
         android:backgroundTint="#6D4C41"
-        android:text="@string/btnRealizarPedido"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Realizar Pedido"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cdvHistorial" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
