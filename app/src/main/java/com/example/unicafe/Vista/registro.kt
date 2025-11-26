@@ -25,6 +25,7 @@ class registro : AppCompatActivity(), RegistroContrac {
     private lateinit var etNombreUsuario: EditText
     private lateinit var etEmail: EditText
     private lateinit var etPasswordRegistro: EditText
+    private lateinit var etTelefono: EditText
     private lateinit var btnRegistrar: Button
     private lateinit var presentador: RegistrPresenter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +39,7 @@ class registro : AppCompatActivity(), RegistroContrac {
         }
         etNombreUsuario = findViewById(R.id.edtUNombre)
         etEmail = findViewById(R.id.edtCorreo)
+        etTelefono = findViewById(R.id.edtTelefono)
         etPasswordRegistro = findViewById(R.id.edtPass)
         btnRegistrar = findViewById(R.id.btnRegistrar)
 
@@ -58,6 +60,7 @@ class registro : AppCompatActivity(), RegistroContrac {
             val nombreUsuario = etNombreUsuario.text.toString()
             val email = etEmail.text.toString()
             val password = etPasswordRegistro.text.toString()
+            val telefono = etTelefono.text.toString()
             presentador.registrarUsuario(nombreUsuario, email, password)
         }
     }

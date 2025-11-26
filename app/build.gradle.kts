@@ -120,4 +120,6 @@ dependencies {
     androidTestImplementation("androidx.test:rules:1.5.0")
     androidTestImplementation("com.squareup.okhttp3:mockwebserver:4.11.0")
 
+    implementation("com.google.android.material:material:1.x.x")
+
 }

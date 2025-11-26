@@ -29,5 +29,12 @@
     <string name="btnRealizarPedido">Realizar Pedido</string>
     <string name="btnOrdenar">Ordenar</string>
     <string name="btnRefrescar">Refrescar</string>
+    <string name="txtTitulo">"\n"UNICAFE</string>
+    <string name="txtTelefono">Telefono</string>
+    <string name="txtProducPedido">Producto pedido</string>
+    <string name="txtPrecioPedido">Precio del producto</string>
+    <string name="txtCantidadPedido">Cantidad de producto</string>
+    <string name="txtSubtotal">Subtotal del pedido</string>
+    <string name="txtTotal">Total: </string>
 
 </resources>

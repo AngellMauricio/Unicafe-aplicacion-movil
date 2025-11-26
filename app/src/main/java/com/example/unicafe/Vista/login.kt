@@ -13,11 +13,12 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.unicafe.R
 import com.example.unicafe.Presentador.LoginPresenter
 import com.example.unicafe.Vista.Contract.LoginContrac
+import com.google.android.material.textfield.TextInputEditText
 import kotlin.jvm.java
 
 class login : AppCompatActivity(), LoginContrac {
     private lateinit var etEmail: EditText
-    private lateinit var etPassword: EditText
+    private lateinit var etPassword: TextInputEditText
     private lateinit var btnAcceder: Button
     private lateinit var tvRegistrar: TextView
     private lateinit var presentador: LoginPresenter
@@ -32,7 +33,7 @@ class login : AppCompatActivity(), LoginContrac {
             insets
         }
         etEmail = findViewById(R.id.edtUsuario)
-        etPassword = findViewById(R.id.edtpassword)
+        etPassword = findViewById(R.id.etPassword)
         btnAcceder = findViewById(R.id.btnAcceder)
         tvRegistrar = findViewById(R.id.txtRegistrar)
 
