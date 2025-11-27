@@ -73,21 +73,28 @@
                 app:layout_constraintStart_toStartOf="@+id/edtUNombre"
                 app:layout_constraintTop_toBottomOf="@+id/edtUNombre" />
 
-            <EditText
-                android:id="@+id/edtPass"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPasswordContainer"
                 android:layout_width="341dp"
                 android:layout_height="56dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="16dp"
                 android:ems="10"
-                android:hint="@string/txtpass"
-                android:inputType="textPassword"
-                android:textColor="@color/black"
+                android:hint="@string/txtPassword"
                 android:textColorHint="@color/black"
-                android:textStyle="normal"
-                app:layout_constraintEnd_toEndOf="@+id/edtTelefono"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/edtTelefono"
-                app:layout_constraintTop_toBottomOf="@+id/edtTelefono" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.433"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtTelefono"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="#795548">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="341dp"
+                    android:layout_height="56dp"
+                    android:inputType="textPassword"
+                    android:textColor="#000000" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <EditText
                 android:id="@+id/edtTelefono"
@@ -96,6 +103,7 @@
                 android:layout_marginTop="16dp"
                 android:ems="10"
                 android:hint="@string/txtTelefono"
+                android:phoneNumber="true"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textStyle="normal"
@@ -111,10 +119,10 @@
                 android:layout_marginTop="24dp"
                 android:backgroundTint="#6D4C41"
                 android:text="@string/btnRegistrar"
-                app:layout_constraintEnd_toEndOf="@+id/edtPass"
-                app:layout_constraintHorizontal_bias="0.619"
-                app:layout_constraintStart_toStartOf="@+id/edtPass"
-                app:layout_constraintTop_toBottomOf="@+id/edtPass" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilPasswordContainer" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

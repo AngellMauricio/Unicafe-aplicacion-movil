@@ -36,5 +36,7 @@
     <string name="txtCantidadPedido">Cantidad de producto</string>
     <string name="txtSubtotal">Subtotal del pedido</string>
     <string name="txtTotal">Total: </string>
+    <string name="imgPedidos">Pedidos</string>
+
 
 </resources>
