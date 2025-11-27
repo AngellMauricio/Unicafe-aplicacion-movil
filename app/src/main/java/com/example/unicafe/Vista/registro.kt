@@ -13,6 +13,8 @@ import com.example.unicafe.Modelo.ifaceApiService
 import com.example.unicafe.Presentador.RegistrPresenter
 import com.example.unicafe.R
 import com.example.unicafe.Vista.Contract.RegistroContrac
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -24,7 +26,7 @@ import kotlin.jvm.java
 class registro : AppCompatActivity(), RegistroContrac {
     private lateinit var etNombreUsuario: EditText
     private lateinit var etEmail: EditText
-    private lateinit var etPasswordRegistro: EditText
+    private lateinit var etPasswordRegistro: TextInputEditText
     private lateinit var etTelefono: EditText
     private lateinit var btnRegistrar: Button
     private lateinit var presentador: RegistrPresenter
@@ -40,7 +42,7 @@ class registro : AppCompatActivity(), RegistroContrac {
         etNombreUsuario = findViewById(R.id.edtUNombre)
         etEmail = findViewById(R.id.edtCorreo)
         etTelefono = findViewById(R.id.edtTelefono)
-        etPasswordRegistro = findViewById(R.id.edtPass)
+        etPasswordRegistro = findViewById(R.id.etPassword)
         btnRegistrar = findViewById(R.id.btnRegistrar)
 
         val gson = GsonBuilder().setLenient().create()

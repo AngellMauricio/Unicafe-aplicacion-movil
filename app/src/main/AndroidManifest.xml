@@ -22,6 +22,15 @@
             android:name=".Vista.registro"
             android:exported="false" />
         <activity
+            android:name=".Vista.Productos"
+            android:exported="false" />
+        <activity
+            android:name=".Vista.detalleProducto"
+            android:exported="false" />
+        <activity
+            android:name=".Vista.Historial"
+            android:exported="false" />
+        <activity
             android:name=".Vista.login"
             android:exported="true">
             <intent-filter>
@@ -30,9 +39,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Vista.MainActivity"
-            android:exported="true"></activity>
     </application>
 
 </manifest>

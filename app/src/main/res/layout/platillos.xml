@@ -7,8 +7,8 @@
     android:background="#EFE4D2">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="382dp"
-        android:layout_height="174dp"
+        android:layout_width="385dp"
+        android:layout_height="213dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="15dp"
@@ -23,11 +23,14 @@
             android:background="#EFE4D2">
 
             <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/imgProducto"
+                android:layout_width="149dp"
+                android:layout_height="192dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="13dp"
+                android:scaleType="center"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
@@ -36,25 +39,27 @@
                 android:id="@+id/txtNombrePlatillo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="32dp"
                 android:text="Nombre de platillo"
+                android:textAlignment="center"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                app:layout_constraintStart_toEndOf="@+id/imgProducto"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/txtPrecioPlatillo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="12dp"
                 android:text="Precio"
+                android:textAlignment="center"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.536"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                app:layout_constraintHorizontal_bias="0.559"
+                app:layout_constraintStart_toEndOf="@+id/imgProducto"
                 app:layout_constraintTop_toBottomOf="@+id/txtNombrePlatillo" />
 
             <Button
@@ -65,10 +70,12 @@
                 android:layout_marginTop="8dp"
                 android:backgroundTint="#6D4C41"
                 android:text="@string/btnOrdenar"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.196"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
-                app:layout_constraintTop_toBottomOf="@+id/txtPrecioPlatillo" />
+                app:layout_constraintHorizontal_bias="0.25"
+                app:layout_constraintStart_toEndOf="@+id/imgProducto"
+                app:layout_constraintTop_toBottomOf="@+id/txtPrecioPlatillo"
+                app:layout_constraintVertical_bias="0.311" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

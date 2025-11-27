@@ -56,7 +56,7 @@ class login : AppCompatActivity(), LoginContrac {
 
     override fun navegarAMain() {
 
-        startActivity(Intent(this, menu::class.java))
+        startActivity(Intent(this, Productos::class.java))
         finish()
     }
 }
