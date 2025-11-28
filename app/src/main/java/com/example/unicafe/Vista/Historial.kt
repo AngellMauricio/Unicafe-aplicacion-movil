@@ -20,7 +20,6 @@ class Historial : AppCompatActivity(), HistorialContract.View {
     private lateinit var rcvHistorial: RecyclerView
     private lateinit var tvTotalPedido: TextView
     private lateinit var btnRealizarPedido: Button
-    // Agrega un ProgressBar en tu XML activity_historial.xml para mostrar carga
     private lateinit var progressBar: ProgressBar
     private lateinit var adaptador: HistorialAdapter
     private lateinit var presenter: HistorialPresenter
@@ -29,29 +28,23 @@ class Historial : AppCompatActivity(), HistorialContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_historial)
 
-        // 1. Inicializar Presenter
         presenter = HistorialPresenter(this, this)
 
-        // 2. Enlazar vistas
         rcvHistorial = findViewById(R.id.rcvHistorial)
         tvTotalPedido = findViewById(R.id.txtTotal)
         btnRealizarPedido = findViewById(R.id.btnRealizarPedido)
-        // Asegúrate de agregar esto en tu XML y ponerle este ID
         progressBar = findViewById(R.id.pgbCarga)
 
-        // 3. Configurar RecyclerView
         rcvHistorial.layoutManager = LinearLayoutManager(this)
         adaptador = HistorialAdapter(this, CarritoManager.itemsCarrito)
         rcvHistorial.adapter = adaptador
 
         actualizarUI()
 
-        // 4. Acción del botón
         btnRealizarPedido.setOnClickListener {
             if (CarritoManager.itemsCarrito.isEmpty()) {
                 Toast.makeText(this, "El carrito está vacío", Toast.LENGTH_SHORT).show()
             } else {
-                // Llamamos al presentador con la lista actual del singleton
                 presenter.realizarPedido(CarritoManager.itemsCarrito)
             }
         }
@@ -62,7 +55,6 @@ class Historial : AppCompatActivity(), HistorialContract.View {
         adaptador.notifyDataSetChanged()
     }
 
-    // --- Implementación del Contrato MVP ---
 
     override fun mostrarCarga() {
         progressBar.visibility = View.VISIBLE
@@ -78,11 +70,8 @@ class Historial : AppCompatActivity(), HistorialContract.View {
 
     override fun mostrarExito(mensaje: String) {
         Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
-        // Éxito: Limpiamos el carrito local
         CarritoManager.limpiarCarrito()
-        // Actualizamos la pantalla (quedará vacía y total 0)
         actualizarUI()
-        // Opcional: cerrar la actividad automáticamente después de unos segundos
         /*
         rcvHistorial.postDelayed({
             finish()
@@ -96,7 +85,6 @@ class Historial : AppCompatActivity(), HistorialContract.View {
 
     override fun onResume() {
         super.onResume()
-        // Asegura que si volvemos a la pantalla, se refresque la lista
         if(::adaptador.isInitialized) {
             actualizarUI()
         }

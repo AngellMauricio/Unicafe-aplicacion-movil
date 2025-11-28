@@ -43,12 +43,9 @@ class HistorialPresenter (private val view: HistorialContract.View, private val 
     override fun realizarPedido(listaCarrito: List<ItemCarrito>) {
         view.mostrarCarga()
 
-        // 1. OBTENER EL ID DEL USUARIO ACTUAL
-        // Asumo que guardaste el ID en SharedPreferences al hacer login.
-        // Ajusta el nombre del archivo ("MiAppPrefs") y la llave ("USER_ID") a como los tengas tú.
-        val sharedPref = context.getSharedPreferences("MiAppPrefs", Context.MODE_PRIVATE)
-        // Usamos -1 como valor por defecto si no se encuentra el ID
-        val idUsuarioActual = sharedPref.getInt("USER_ID", -1)
+        // OBTENER EL ID DEL USUARIO ACTUAL
+        val sharedPref = context.getSharedPreferences("apiAcceso", Context.MODE_PRIVATE)
+        val idUsuarioActual = sharedPref.getInt("idUsuario", -1)
 
         if (idUsuarioActual == -1) {
             view.ocultarCarga()
@@ -56,7 +53,7 @@ class HistorialPresenter (private val view: HistorialContract.View, private val 
             return
         }
 
-        // 2. TRANSFORMAR LA LISTA DE ÍTEMS (Igual que antes)
+        // TRANSFORMAR LA LISTA DE ÍTEMS (Igual que antes)
         val listaItemsParaEnviar = listaCarrito.map { itemCarrito ->
             ItemPedido(
                 idProducto = itemCarrito.producto.idProducto,
@@ -65,15 +62,13 @@ class HistorialPresenter (private val view: HistorialContract.View, private val 
             )
         }
 
-        // 3. CREAR EL OBJETO DE PETICIÓN COMPLETO
+        // CREAR EL OBJETO DE PETICIÓN COMPLETO
         val peticionCompleta = PedidoRe(
             idUsuario = idUsuarioActual,
             items = listaItemsParaEnviar
         )
 
-        // 4. ENVIAR (Ahora enviamos 'peticionCompleta')
         apiService.registrarPedido(peticionCompleta).enqueue(object : Callback<clsDatosRespuestaH> {
-            // ... (El resto del onResponse y onFailure sigue IGUAL que en la respuesta anterior) ...
             override fun onResponse(call: Call<clsDatosRespuestaH>, response: Response<clsDatosRespuestaH>) {
                 view.ocultarCarga()
                 if (response.isSuccessful) {

@@ -15,7 +15,6 @@ interface ifaceApiService {
     fun obtenerProductos(): Call<List<tblProductos>>
 
     @POST("apiHistorial.php")
-    // CAMBIO AQUÍ: Ahora recibe el objeto completo PedidoRequest
     fun registrarPedido(@Body pedido: PedidoRe): Call<clsDatosRespuestaH>
 
     //Para login y registro

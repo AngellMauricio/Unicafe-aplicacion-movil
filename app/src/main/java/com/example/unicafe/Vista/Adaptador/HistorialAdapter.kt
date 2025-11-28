@@ -34,7 +34,6 @@ class HistorialAdapter (val contexto: Context, val listaItems: List<ItemCarrito>
         holder.tvNombre.text = item.producto.nombre
         holder.tvPrecioUni.text = "Precio: $${item.producto.precio}"
         holder.tvCantidad.text = "Cantidad: ${item.cantidad}"
-        // Usamos la propiedad calculada 'subtotal' de ItemCarrito
         holder.tvSubtotal.text = "Subtotal: $${item.subtotal}"
 
         Glide.with(contexto)

@@ -39,12 +39,10 @@ class ProductosAdapter(val contexto: Context, val listaProductos: List<tblProduc
         Glide.with(contexto)
             .load("https://unicafe.grupoctic.com/" + producto.imagenProdc)
             .into(holder.imgProducto)
-        // --- CAMBIO 1: Clic en imagen muestra POPUP ---
         holder.imgProducto.setOnClickListener {
             verDetallePopup(producto)
         }
 
-        // --- CAMBIO 2: Botón Ordena agrega al CARRITO ---
         holder.btnOrdena.setOnClickListener {
             // Agregamos al singleton
             CarritoManager.agregarProducto(producto)
@@ -56,11 +54,9 @@ class ProductosAdapter(val contexto: Context, val listaProductos: List<tblProduc
 
     private fun verDetallePopup(producto : tblProductos)
     {
-        // Necesitamos castear el contexto a AppCompatActivity para obtener el FragmentManager
         val activity = contexto as? AppCompatActivity
         if (activity != null) {
             val dialog = detalleProducto.newInstance(producto)
-            // "DetalleDialog" es una etiqueta para identificar el fragmento
             dialog.show(activity.supportFragmentManager, "DetalleDialog")
         } else {
             Toast.makeText(contexto, "Error al abrir detalle", Toast.LENGTH_SHORT).show()

@@ -35,10 +35,8 @@ class login : AppCompatActivity(), LoginContrac {
                 if (!task.isSuccessful) {
                     msg = "Fallo al suscribirse a notificaciones"
                 }
-                // Opcional: Mostrar en el log para que tú sepas si funcionó
                 Log.d("FCM_SUSCRIPCION", msg)
-                // Opcional: Mostrar un toast pequeño (quizás solo para pruebas)
-                Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                //Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
             }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
