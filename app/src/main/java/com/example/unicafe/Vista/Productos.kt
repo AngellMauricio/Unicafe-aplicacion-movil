@@ -18,7 +18,6 @@ import com.example.unicafe.Vista.Contract.ProductosContract
 class Productos : AppCompatActivity(), ProductosContract {
     private lateinit var rcvProductos: RecyclerView
     private lateinit var presenter : ProductosPresenter
-    private lateinit var btnLogin : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,15 +30,11 @@ class Productos : AppCompatActivity(), ProductosContract {
         }
 
         rcvProductos = findViewById(R.id.rcvProductos)
-        btnLogin = findViewById(R.id.btnLogin)
         rcvProductos.layoutManager = LinearLayoutManager(this)
 
         presenter = ProductosPresenter(this)
         presenter.obtenerProductos()
 
-        btnLogin.setOnClickListener {
-            finish()
-        }
     }
 
     override fun mostrarProductos(productos: List<tblProductos>) {
