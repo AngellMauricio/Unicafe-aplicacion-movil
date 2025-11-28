@@ -1,78 +1,104 @@
 package com.example.unicafe.Vista
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.unicafe.Modelo.CarritoManager
+import com.example.unicafe.Presentador.HistorialPresenter
 import com.example.unicafe.R
 import com.example.unicafe.Vista.Adaptador.HistorialAdapter
+import com.example.unicafe.Vista.Contract.HistorialContract
 
-class Historial : AppCompatActivity() {
+class Historial : AppCompatActivity(), HistorialContract.View {
 
     private lateinit var rcvHistorial: RecyclerView
     private lateinit var tvTotalPedido: TextView
     private lateinit var btnRealizarPedido: Button
+    // Agrega un ProgressBar en tu XML activity_historial.xml para mostrar carga
+    private lateinit var progressBar: ProgressBar
     private lateinit var adaptador: HistorialAdapter
+    private lateinit var presenter: HistorialPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_historial) // Asegúrate que este es tu layout de la imagen 4
+        setContentView(R.layout.activity_historial)
 
-        // 1. Enlazar vistas
-        rcvHistorial = findViewById(R.id.rcvHistorial) // Pon este ID a tu RecyclerView en el XML
-        tvTotalPedido = findViewById(R.id.txtTotal) // Pon este ID al TextView que dice "Total:"
-        btnRealizarPedido = findViewById(R.id.btnRealizarPedido) // Pon este ID al botón café
+        // 1. Inicializar Presenter
+        presenter = HistorialPresenter(this, this)
 
-        // 2. Configurar RecyclerView
+        // 2. Enlazar vistas
+        rcvHistorial = findViewById(R.id.rcvHistorial)
+        tvTotalPedido = findViewById(R.id.txtTotal)
+        btnRealizarPedido = findViewById(R.id.btnRealizarPedido)
+        // Asegúrate de agregar esto en tu XML y ponerle este ID
+        progressBar = findViewById(R.id.pgbCarga)
+
+        // 3. Configurar RecyclerView
         rcvHistorial.layoutManager = LinearLayoutManager(this)
-        // Usamos la lista directamente del Singleton CarritoManager
         adaptador = HistorialAdapter(this, CarritoManager.itemsCarrito)
         rcvHistorial.adapter = adaptador
 
-        // 3. Actualizar el total en pantalla
-        actualizarTotalUI()
+        actualizarUI()
 
-        // 4. Acción del botón Realizar Pedido
+        // 4. Acción del botón
         btnRealizarPedido.setOnClickListener {
             if (CarritoManager.itemsCarrito.isEmpty()) {
                 Toast.makeText(this, "El carrito está vacío", Toast.LENGTH_SHORT).show()
             } else {
-                realizarPedidoEnServidor()
+                // Llamamos al presentador con la lista actual del singleton
+                presenter.realizarPedido(CarritoManager.itemsCarrito)
             }
         }
     }
 
-    private fun actualizarTotalUI() {
-        val total = CarritoManager.obtenerTotalPedido()
-        tvTotalPedido.text = "Total: $$total"
-    }
-
-    // Aquí irá la lógica para conectar con el Presenter y Retrofit en el futuro
-    private fun realizarPedidoEnServidor() {
-        // TODO: Implementar la llamada al Presenter para enviar la lista CarritoManager.itemsCarrito
-        Toast.makeText(this, "Procesando pedido... (Simulación)", Toast.LENGTH_LONG).show()
-
-        // SIMULACIÓN DE ÉXITO:
-        // 1. Limpiamos el carrito
-        CarritoManager.limpiarCarrito()
-        // 2. Notificamos al adaptador que los datos cambiaron
+    private fun actualizarUI() {
+        tvTotalPedido.text = "Total: $${CarritoManager.obtenerTotalPedido()}"
         adaptador.notifyDataSetChanged()
-        // 3. Actualizamos el total a 0
-        actualizarTotalUI()
-        Toast.makeText(this, "¡Pedido realizado con éxito!", Toast.LENGTH_SHORT).show()
-        // Opcional: finish() para cerrar la pantalla de historial
     }
 
-    // Opcional: Si regresas a esta pantalla, actualizar los datos
+    // --- Implementación del Contrato MVP ---
+
+    override fun mostrarCarga() {
+        progressBar.visibility = View.VISIBLE
+        btnRealizarPedido.isEnabled = false
+        btnRealizarPedido.text = "Enviando..."
+    }
+
+    override fun ocultarCarga() {
+        progressBar.visibility = View.GONE
+        btnRealizarPedido.isEnabled = true
+        btnRealizarPedido.text = "Realizar Pedido"
+    }
+
+    override fun mostrarExito(mensaje: String) {
+        Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
+        // Éxito: Limpiamos el carrito local
+        CarritoManager.limpiarCarrito()
+        // Actualizamos la pantalla (quedará vacía y total 0)
+        actualizarUI()
+        // Opcional: cerrar la actividad automáticamente después de unos segundos
+        /*
+        rcvHistorial.postDelayed({
+            finish()
+        }, 2000)
+        */
+    }
+
+    override fun mostrarError(mensaje: String) {
+        Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
+    }
+
     override fun onResume() {
         super.onResume()
+        // Asegura que si volvemos a la pantalla, se refresque la lista
         if(::adaptador.isInitialized) {
-            adaptador.notifyDataSetChanged()
-            actualizarTotalUI()
+            actualizarUI()
         }
     }
 }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "318822591656",
+    "project_id": "unicafeapp-19698",
+    "storage_bucket": "unicafeapp-19698.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318822591656:android:de641967000c5ebff1269d",
+        "android_client_info": {
+          "package_name": "com.example.unicafe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsCWZN6GbO7LF-B0WBmooVCJTkNCIEV3o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

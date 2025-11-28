@@ -2,6 +2,7 @@ package com.example.unicafe.Vista
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -14,6 +15,7 @@ import com.example.unicafe.R
 import com.example.unicafe.Presentador.LoginPresenter
 import com.example.unicafe.Vista.Contract.LoginContrac
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.messaging.FirebaseMessaging
 import kotlin.jvm.java
 
 class login : AppCompatActivity(), LoginContrac {
@@ -27,6 +29,17 @@ class login : AppCompatActivity(), LoginContrac {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
+        FirebaseMessaging.getInstance().subscribeToTopic("nuevos_productos")
+            .addOnCompleteListener { task ->
+                var msg = "Suscrito a notificaciones de productos"
+                if (!task.isSuccessful) {
+                    msg = "Fallo al suscribirse a notificaciones"
+                }
+                // Opcional: Mostrar en el log para que tú sepas si funcionó
+                Log.d("FCM_SUSCRIPCION", msg)
+                // Opcional: Mostrar un toast pequeño (quizás solo para pruebas)
+                Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+            }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)

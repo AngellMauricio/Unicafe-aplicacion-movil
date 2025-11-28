@@ -9,22 +9,31 @@
 
     <ImageView
         android:id="@+id/imgProductos"
-        android:layout_width="406dp"
-        android:layout_height="109dp"
+        android:layout_width="410dp"
+        android:layout_height="114dp"
         android:scaleType="centerCrop"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/logoproductos" />
+        android:src="@drawable/logoproductos" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvProductos"
-        android:layout_width="409dp"
-        android:layout_height="584dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="406dp"
+        android:layout_height="523dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgProductos" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="Home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rcvProductos"
+        app:layout_constraintVertical_bias="0.652" />
 </androidx.constraintlayout.widget.ConstraintLayout>

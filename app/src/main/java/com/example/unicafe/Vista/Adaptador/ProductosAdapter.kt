@@ -67,18 +67,6 @@ class ProductosAdapter(val contexto: Context, val listaProductos: List<tblProduc
         }
     }
 
-    fun verDetalle(producto : tblProductos)
-    {
-        val intent = Intent(contexto, detalleProducto::class.java).apply {
-            putExtra("producto_id", producto.idProducto)
-            putExtra("nombre_producto", producto.nombre)
-            putExtra("descripcion_producto", producto.descripcion)
-            putExtra("precio_producto", producto.precio)
-            putExtra("imagen_producto", producto.imagenProdc)
-        }
-        contexto.startActivity(intent)
-    }
-
     fun mostrarHistorial(producto : tblProductos)
     {
         val intent = Intent(contexto, Historial::class.java)
