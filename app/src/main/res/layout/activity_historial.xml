@@ -8,7 +8,7 @@
     android:background="#EFE4D2">
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnRealizarPedido"
         android:layout_width="126dp"
         android:layout_height="52dp"
         android:layout_marginTop="44dp"
@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />
+        app:layout_constraintTop_toBottomOf="@+id/rcvHistorial" />
 
     <TextView
         android:id="@+id/txtTotal"
@@ -29,8 +29,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />
+        app:layout_constraintStart_toEndOf="@+id/btnRealizarPedido"
+        app:layout_constraintTop_toBottomOf="@+id/rcvHistorial" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -43,7 +43,7 @@
         app:srcCompat="@drawable/logohistorial" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView2"
+        android:id="@+id/rcvHistorial"
         android:layout_width="406dp"
         android:layout_height="492dp"
         android:layout_marginStart="1dp"

@@ -8,8 +8,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.unicafe.Modelo.CarritoManager
 import com.example.unicafe.Modelo.tblProductos
 import com.example.unicafe.R
 import com.example.unicafe.Vista.Historial
@@ -36,11 +39,31 @@ class ProductosAdapter(val contexto: Context, val listaProductos: List<tblProduc
         Glide.with(contexto)
             .load("https://unicafe.grupoctic.com/" + producto.imagenProdc)
             .into(holder.imgProducto)
+        // --- CAMBIO 1: Clic en imagen muestra POPUP ---
         holder.imgProducto.setOnClickListener {
-            verDetalle(producto)
+            verDetallePopup(producto)
         }
+
+        // --- CAMBIO 2: Botón Ordena agrega al CARRITO ---
         holder.btnOrdena.setOnClickListener {
+            // Agregamos al singleton
+            CarritoManager.agregarProducto(producto)
+            // Feedback visual
+            Toast.makeText(contexto, "${producto.nombre} agregado al pedido", Toast.LENGTH_SHORT).show()
             mostrarHistorial(producto)
+        }
+    }
+
+    private fun verDetallePopup(producto : tblProductos)
+    {
+        // Necesitamos castear el contexto a AppCompatActivity para obtener el FragmentManager
+        val activity = contexto as? AppCompatActivity
+        if (activity != null) {
+            val dialog = detalleProducto.newInstance(producto)
+            // "DetalleDialog" es una etiqueta para identificar el fragmento
+            dialog.show(activity.supportFragmentManager, "DetalleDialog")
+        } else {
+            Toast.makeText(contexto, "Error al abrir detalle", Toast.LENGTH_SHORT).show()
         }
     }
 
