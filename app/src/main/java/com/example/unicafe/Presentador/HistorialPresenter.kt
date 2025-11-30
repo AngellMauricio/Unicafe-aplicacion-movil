@@ -61,7 +61,8 @@ class HistorialPresenter (private val view: HistorialContract.View, private val 
             ItemPedido(
                 idProducto = itemCarrito.producto.idProducto,
                 cantidad = itemCarrito.cantidad,
-                precioUnitario = itemCarrito.producto.precio
+                precioUnitario = itemCarrito.producto.precio,
+                subtotal = itemCarrito.subtotal
             )
         }
 
