@@ -25,7 +25,9 @@ interface ifaceApiService {
         @Field("action") action: String,
         @Field("nombreUsuario") nombreusuario: String,
         @Field("email") email: String,
-        @Field("password") password: String
+        @Field("password") password: String,
+        // AGREGADO:
+        @Field("telefono") telefono: String
     ): Call<List<clsDatosRespuesta>>
 
     @FormUrlEncoded

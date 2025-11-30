@@ -43,12 +43,11 @@ class HistorialPresenter (private val view: HistorialContract.View, private val 
     override fun realizarPedido(listaCarrito: List<ItemCarrito>) {
         view.mostrarCarga()
 
-        // 1. OBTENER EL ID DEL USUARIO ACTUAL
-        // Asumo que guardaste el ID en SharedPreferences al hacer login.
-        // Ajusta el nombre del archivo ("MiAppPrefs") y la llave ("USER_ID") a como los tengas tú.
-        val sharedPref = context.getSharedPreferences("MiAppPrefs", Context.MODE_PRIVATE)
-        // Usamos -1 como valor por defecto si no se encuentra el ID
-        val idUsuarioActual = sharedPref.getInt("USER_ID", -1)
+        // Usamos el MISMO nombre de archivo
+        val sharedPref = context.getSharedPreferences("MiAppPreferenciasGlobales", Context.MODE_PRIVATE)
+
+        // Usamos la MISMA clave "user_id"
+        val idUsuarioActual = sharedPref.getInt("user_id", -1)
 
         if (idUsuarioActual == -1) {
             view.ocultarCarga()
@@ -61,10 +60,10 @@ class HistorialPresenter (private val view: HistorialContract.View, private val 
             ItemPedido(
                 idProducto = itemCarrito.producto.idProducto,
                 cantidad = itemCarrito.cantidad,
-                precioUnitario = itemCarrito.producto.precio
+                precioUnitario = itemCarrito.producto.precio,
+                subtotal = itemCarrito.subtotal
             )
         }
-
         // 3. CREAR EL OBJETO DE PETICIÓN COMPLETO
         val peticionCompleta = PedidoRe(
             idUsuario = idUsuarioActual,

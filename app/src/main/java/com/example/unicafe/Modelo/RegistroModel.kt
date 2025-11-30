@@ -14,8 +14,8 @@ class RegistroModel(private val apiService: ifaceApiService) {
         fun onFailure(message: String)
     }
 
-    fun registrarUsuario(nombreUsuario: String, email: String, password: String, listener: OnRegistroListener) {
-        apiService.registrarUsuario("registrar", nombreUsuario, email, password)
+    fun registrarUsuario(nombreUsuario: String, email: String, password: String, telefono: String, listener: OnRegistroListener) {
+        apiService.registrarUsuario("registrar", nombreUsuario, email, password, telefono)
             .enqueue(object : Callback<List<clsDatosRespuesta>> {
                 override fun onResponse(
                     call: Call<List<clsDatosRespuesta>>,
