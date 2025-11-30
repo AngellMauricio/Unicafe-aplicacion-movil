@@ -19,26 +19,25 @@ class LoginPresenter(private val vista: LoginContrac) {
             if (error != null) {
                 vista.mostrarMensaje(error)
             } else if (datos != null && datos.firstOrNull()?.Estado == "Correcto") {
-                // 1. Obtenemos el primer objeto de la respuesta
-                val respuestaUsuario = datos.firstOrNull()
+                val user = datos.firstOrNull()
+                val id = user?.user_id
+                val rol = user?.rol_id ?: 3 // Por defecto cliente si es nulo
 
-                // 2. Extraemos el ID usando tu clase clsDatosRespuesta
-                //    Usamos el operador seguro (?.) por si es nulo
-                val idUsuarioDelServidor = respuestaUsuario?.user_id
+                if (id != null) {
+                    vista.guardarUsuarioSesion(id, rol)
 
-                // 3. Verificamos que el ID no sea nulo antes de guardarlo
-                if (idUsuarioDelServidor != null) {
-                    // Llamamos a la nueva función de la vista para guardar el ID
-                    vista.guardarUsuarioSesion(idUsuarioDelServidor)
-                    vista.mostrarMensaje("Login exitoso. ID: $idUsuarioDelServidor") // Opcional: para depurar
-                } else {
-                    vista.mostrarMensaje("Login correcto pero no se recibió el ID de usuario.")
+                    // LÓGICA DE ROLES
+                    if (rol == 3) {
+                        vista.navegarACliente() // Cliente
+                    } else if (rol == 1 || rol == 2) {
+                        vista.navegarAAdmin()   // Admin/Empleado
+                    } else {
+                        vista.mostrarMensaje("Rol desconocido")
+                    }
                 }
-
-                // 4. Navegamos a la pantalla principal
-                vista.navegarAMain()
+                // ...
             } else {
-                vista.mostrarMensaje("Usuario o contraseña incorrectos")
+                vista.mostrarMensaje("Credenciales incorrectas")
             }
         }
     }

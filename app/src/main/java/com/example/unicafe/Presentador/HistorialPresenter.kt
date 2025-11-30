@@ -46,9 +46,10 @@ class HistorialPresenter (private val view: HistorialContract.View, private val 
         // 1. OBTENER EL ID DEL USUARIO ACTUAL
         // Asumo que guardaste el ID en SharedPreferences al hacer login.
         // Ajusta el nombre del archivo ("MiAppPrefs") y la llave ("USER_ID") a como los tengas tú.
-        val sharedPref = context.getSharedPreferences("MiAppPrefs", Context.MODE_PRIVATE)
-        // Usamos -1 como valor por defecto si no se encuentra el ID
-        val idUsuarioActual = sharedPref.getInt("USER_ID", -1)
+        val sharedPref = context.getSharedPreferences("MiAppPreferenciasGlobales", Context.MODE_PRIVATE)
+        // Usamos LA MISMA clave que en login.kt ("user_id")
+        val idUsuarioActual = sharedPref.getInt("user_id", -1)
+
 
         if (idUsuarioActual == -1) {
             view.ocultarCarga()

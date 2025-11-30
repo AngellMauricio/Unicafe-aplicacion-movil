@@ -29,6 +29,7 @@
         app:srcCompat="@drawable/logopedidos" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvPedidosAdmin"
         android:layout_width="409dp"
         android:layout_height="516dp"
         android:layout_marginStart="1dp"

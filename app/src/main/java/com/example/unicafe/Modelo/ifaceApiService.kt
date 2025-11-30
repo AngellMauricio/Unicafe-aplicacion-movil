@@ -11,6 +11,8 @@ import retrofit2.http.POST
 
 
 interface ifaceApiService {
+    @GET("apiPedidosAdmin.php")
+    fun obtenerUsuariosConPedidos(): Call<List<clsUsuarioPedido>>
     @GET("apiProductos.php")
     fun obtenerProductos(): Call<List<tblProductos>>
 

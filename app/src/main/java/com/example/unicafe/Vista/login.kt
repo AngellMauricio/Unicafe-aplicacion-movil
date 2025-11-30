@@ -65,18 +65,21 @@ class login : AppCompatActivity(), LoginContrac {
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
     }
 
-    override fun navegarAMain() {
+    override fun guardarUsuarioSesion(user_id: Int, rol_id: Int) {
+        val sharedPref = getSharedPreferences("MiAppPreferenciasGlobales", MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putInt("user_id", user_id)
+        editor.putInt("rol_id", rol_id) // Guardamos el rol por si acaso
+        editor.apply()
+    }
 
+    override fun navegarACliente() {
         startActivity(Intent(this, Productos::class.java))
         finish()
     }
-    override fun guardarUsuarioSesion(user_id: Int) {
-        // Usamos el nombre de archivo "MiAppPreferenciasGlobales"
-        val sharedPref = getSharedPreferences("MiAppPreferenciasGlobales", MODE_PRIVATE)
-        val editor = sharedPref.edit()
-        // CLAVE ESTÁNDAR: "user_id"
-        editor.putInt("user_id", user_id)
-        editor.apply()
-        Log.d("LOGIN", "ID de usuario guardado: $user_id")
+
+    override fun navegarAAdmin() {
+        startActivity(Intent(this, PedidosAdmin::class.java)) // La nueva activity
+        finish()
     }
 }

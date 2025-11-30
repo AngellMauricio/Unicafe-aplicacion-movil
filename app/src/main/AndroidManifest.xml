@@ -29,6 +29,9 @@
             android:name=".Vista.Historial"
             android:exported="false" />
         <activity
+            android:name=".Vista.PedidosAdmin"
+            android:exported="false"/>
+        <activity
             android:name=".Vista.login"
             android:exported="true">
             <intent-filter>
