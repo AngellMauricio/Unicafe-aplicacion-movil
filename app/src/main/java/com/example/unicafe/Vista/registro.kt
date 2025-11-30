@@ -63,7 +63,11 @@ class registro : AppCompatActivity(), RegistroContrac {
             val email = etEmail.text.toString()
             val password = etPasswordRegistro.text.toString()
             val telefono = etTelefono.text.toString()
-            presentador.registrarUsuario(nombreUsuario, email, password)
+            if (telefono.isEmpty()) {
+                mostrarMensaje("Por favor ingrese su teléfono")
+                return@setOnClickListener
+            }
+            presentador.registrarUsuario(nombreUsuario, email, password, telefono)
         }
     }
 

@@ -70,4 +70,13 @@ class login : AppCompatActivity(), LoginContrac {
         startActivity(Intent(this, Productos::class.java))
         finish()
     }
+    override fun guardarUsuarioSesion(user_id: Int) {
+        // Usamos el nombre de archivo "MiAppPreferenciasGlobales"
+        val sharedPref = getSharedPreferences("MiAppPreferenciasGlobales", MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        // CLAVE ESTÁNDAR: "user_id"
+        editor.putInt("user_id", user_id)
+        editor.apply()
+        Log.d("LOGIN", "ID de usuario guardado: $user_id")
+    }
 }

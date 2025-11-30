@@ -7,8 +7,9 @@ class RegistrPresenter (
 private val vista: RegistroContrac,
 private val model: RegistroModel
 ) {
-    fun registrarUsuario(nombreUsuario: String, email: String, password: String) {
-        model.registrarUsuario(nombreUsuario, email, password, object : RegistroModel.OnRegistroListener {
+    fun registrarUsuario(nombreUsuario: String, email: String, password: String, telefono: String) {
+        // Pásalo al modelo
+        model.registrarUsuario(nombreUsuario, email, password, telefono, object : RegistroModel.OnRegistroListener {
             override fun onSuccess(message: String) {
                 vista.mostrarMensaje(message)
                 vista.registroExitoso()
