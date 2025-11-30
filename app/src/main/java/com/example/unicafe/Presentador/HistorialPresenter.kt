@@ -83,9 +83,6 @@ class HistorialPresenter (private val view: HistorialContract.View, private val 
     override fun realizarPedido(listaCarrito: List<ItemCarrito>) {
         view.mostrarCarga()
 
-        // 1. OBTENER EL ID DEL USUARIO ACTUAL
-        // Asumo que guardaste el ID en SharedPreferences al hacer login.
-        // Ajusta el nombre del archivo ("MiAppPrefs") y la llave ("USER_ID") a como los tengas tú.
         val sharedPref = context.getSharedPreferences("MiAppPreferenciasGlobales", Context.MODE_PRIVATE)
         // Usamos LA MISMA clave que en login.kt ("user_id")
         val idUsuarioActual = sharedPref.getInt("user_id", -1)

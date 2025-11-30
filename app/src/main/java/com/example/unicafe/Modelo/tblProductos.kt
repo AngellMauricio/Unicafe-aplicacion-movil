@@ -5,5 +5,5 @@ data class tblProductos(
     val nombre : String,
     val descripcion : String,
     val precio : Double,
-    val imagenProdc : String
+    val imagenProdc : String?
 )
