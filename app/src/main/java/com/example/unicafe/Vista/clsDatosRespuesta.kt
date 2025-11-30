@@ -1,5 +1,6 @@
 package com.example.unicafe.Vista
 import com.google.gson.annotations.SerializedName
+
 data class clsDatosRespuesta(
     val Estado: String,
     val Salida: String,

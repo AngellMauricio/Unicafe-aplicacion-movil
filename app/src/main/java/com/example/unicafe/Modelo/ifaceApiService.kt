@@ -7,10 +7,15 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
-
+import retrofit2.http.Query
 
 
 interface ifaceApiService {
+
+    @GET("apiObtenerPedidosUsuario.php")
+    fun obtenerPedidosPorUsuario(
+        @Query("idUsuario") idUsuario: Int
+    ): Call<List<ItemHistorialResponse>>
     @GET("apiPedidosAdmin.php")
     fun obtenerUsuariosConPedidos(): Call<List<clsUsuarioPedido>>
     @GET("apiProductos.php")

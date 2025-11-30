@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.unicafe.Modelo.CarritoManager
+import com.example.unicafe.Modelo.ItemCarrito
 import com.example.unicafe.Presentador.HistorialPresenter
 import com.example.unicafe.R
 import com.example.unicafe.Vista.Adaptador.HistorialAdapter
@@ -23,29 +24,46 @@ class Historial : AppCompatActivity(), HistorialContract.View {
     private lateinit var progressBar: ProgressBar
     private lateinit var adaptador: HistorialAdapter
     private lateinit var presenter: HistorialPresenter
+    private var esModoAdmin = false
+    private var idClienteVer = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_historial)
 
-        presenter = HistorialPresenter(this, this)
-
+        // Inicializar vistas
         rcvHistorial = findViewById(R.id.rcvHistorial)
         tvTotalPedido = findViewById(R.id.txtTotal)
         btnRealizarPedido = findViewById(R.id.btnRealizarPedido)
         progressBar = findViewById(R.id.pgbCarga)
 
+        presenter = HistorialPresenter(this, this)
         rcvHistorial.layoutManager = LinearLayoutManager(this)
-        adaptador = HistorialAdapter(this, CarritoManager.itemsCarrito)
-        rcvHistorial.adapter = adaptador
 
-        actualizarUI()
 
-        btnRealizarPedido.setOnClickListener {
-            if (CarritoManager.itemsCarrito.isEmpty()) {
-                Toast.makeText(this, "El carrito está vacío", Toast.LENGTH_SHORT).show()
-            } else {
-                presenter.realizarPedido(CarritoManager.itemsCarrito)
+        // 1. VERIFICAR MODO
+        esModoAdmin = intent.getBooleanExtra("MODO_ADMIN", false)
+        idClienteVer = intent.getIntExtra("ID_CLIENTE_A_VER", -1)
+
+        if (esModoAdmin && idClienteVer != -1) {
+            // --- MODO ADMIN (SOLO LECTURA) ---
+            btnRealizarPedido.visibility = View.GONE // Ocultar botón de comprar
+            tvTotalPedido.text = "Cargando historial del cliente..."
+
+            // Pedir datos al servidor
+            presenter.cargarHistorialDeUsuario(idClienteVer)
+
+        } else {
+            // --- MODO CLIENTE (CARRITO) ---
+            // Mostrar datos locales del carrito
+            mostrarListaHistorial(CarritoManager.itemsCarrito)
+
+            btnRealizarPedido.setOnClickListener {
+                if (CarritoManager.itemsCarrito.isEmpty()) {
+                    Toast.makeText(this, "El carrito está vacío", Toast.LENGTH_SHORT).show()
+                } else {
+                    presenter.realizarPedido(CarritoManager.itemsCarrito)
+                }
             }
         }
     }
@@ -56,27 +74,43 @@ class Historial : AppCompatActivity(), HistorialContract.View {
     }
 
 
+    // Esta función sirve tanto para mostrar el carrito local como el historial remoto
+    override fun mostrarListaHistorial(lista: List<ItemCarrito>) {
+        adaptador = HistorialAdapter(this, lista)
+        rcvHistorial.adapter = adaptador
+
+        // Calcular y mostrar total
+        var total = 0.0
+        for (item in lista) {
+            total += item.subtotal
+        }
+
+        if (esModoAdmin) {
+            tvTotalPedido.text = "Total a Pagar: $$total"
+        } else {
+            tvTotalPedido.text = "Total: $$total"
+        }
+    }
+
     override fun mostrarCarga() {
         progressBar.visibility = View.VISIBLE
         btnRealizarPedido.isEnabled = false
-        btnRealizarPedido.text = "Enviando..."
+        if (!esModoAdmin) btnRealizarPedido.text = "Enviando..."
     }
 
     override fun ocultarCarga() {
         progressBar.visibility = View.GONE
         btnRealizarPedido.isEnabled = true
-        btnRealizarPedido.text = "Realizar Pedido"
+        if (!esModoAdmin) btnRealizarPedido.text = "Realizar Pedido"
     }
 
     override fun mostrarExito(mensaje: String) {
         Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
-        CarritoManager.limpiarCarrito()
-        actualizarUI()
-        /*
-        rcvHistorial.postDelayed({
-            finish()
-        }, 2000)
-        */
+        // Solo limpiamos si es una compra real, no si estamos viendo historial
+        if (!esModoAdmin) {
+            CarritoManager.limpiarCarrito()
+            mostrarListaHistorial(CarritoManager.itemsCarrito)
+        }
     }
 
     override fun mostrarError(mensaje: String) {
@@ -85,8 +119,9 @@ class Historial : AppCompatActivity(), HistorialContract.View {
 
     override fun onResume() {
         super.onResume()
-        if(::adaptador.isInitialized) {
-            actualizarUI()
+        // Solo refrescamos el carrito local automáticamente
+        if (!esModoAdmin && ::adaptador.isInitialized) {
+            mostrarListaHistorial(CarritoManager.itemsCarrito)
         }
     }
 }

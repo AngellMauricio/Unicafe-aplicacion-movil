@@ -1,5 +1,6 @@
 package com.example.unicafe.Vista
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
@@ -51,7 +52,9 @@ class PedidosAdmin : AppCompatActivity(), PedidosAdminContract.View {
     }
 
     override fun navegarADetalleUsuario(idUsuario: Int) {
-        Toast.makeText(this, "Ver detalles del usuario: $idUsuario (Pendiente)", Toast.LENGTH_SHORT).show()
-        // Aquí abrirás la activity de detalle en el futuro
+        val intent = Intent(this, Historial::class.java)
+        intent.putExtra("MODO_ADMIN", true)
+        intent.putExtra("ID_CLIENTE_A_VER", idUsuario)
+        startActivity(intent)
     }
 }
