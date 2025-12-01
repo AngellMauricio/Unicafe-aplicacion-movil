@@ -17,7 +17,7 @@ import java.lang.reflect.Field
 
 
 class PedidosAdminPresenterTest {
-    // 1. Mocks necesarios
+    //Mocks necesarios
     @MockK(relaxed = true)
     private lateinit var view: PedidosAdminContract.View
 

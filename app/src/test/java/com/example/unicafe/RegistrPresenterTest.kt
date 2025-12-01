@@ -36,11 +36,11 @@ class RegistrPresenterTest {
 
         every {
             model.registrarUsuario(
-                any(), // nombre
-                any(), // email
-                any(), // password
-                any(), // telefono
-                capture(slotListener) //Atrapamos el objeto listener aquí
+                any(),
+                any(),
+                any(),
+                any(),
+                capture(slotListener)
             )
         } just Runs
 

@@ -37,17 +37,12 @@ class HistorialPresenterTest {
     fun setUp() {
         MockKAnnotations.init(this)
 
-        // 1. CONFIGURACIÓN DEL CONTEXTO (Mock Normal)
-        // Cuando el presenter pida las preferencias al contexto, le damos las falsas
         every {
             mockContext.getSharedPreferences("MiAppPreferenciasGlobales", Context.MODE_PRIVATE)
         } returns mockSharedPrefs
 
-        // 2. CREACIÓN DEL PRESENTER
-        // Pasamos el contexto mockeado legalmente por el constructor
         presenter = HistorialPresenter(view, mockContext)
 
-        // 3. INYECCIÓN DEL API SERVICE (Reflexión / Hack) 💉
         try {
             val campoPrivado: Field = HistorialPresenter::class.java.getDeclaredField("apiService")
             campoPrivado.isAccessible = true
@@ -103,7 +98,7 @@ class HistorialPresenterTest {
         // Creamos un carrito falso
         val productoMock = tblProductos(
             idProducto = 1, nombre = "Test", precio = 10.0,
-            descripcion = "", imagenProdc = "" // Llenar según pida tu clase
+            descripcion = "", imagenProdc = ""
         )
         val carrito = listOf(ItemCarrito(productoMock, 1))
 
@@ -145,13 +140,13 @@ class HistorialPresenterTest {
             slotCallback.captured.onResponse(mockCall, Response.success(respuestaServidor))
         }
 
-        // 2. Ejecución
+        //Ejecución
         presenter.realizarPedido(carrito)
 
-        // 3. Verificación
+        //Verificación
         verify { view.mostrarExito("Pedido registrado con éxito") }
 
-        // Opcional: Verificar que se envió el ID 50 al servidor
+
         val slotPedido = slot<PedidoRe>()
         verify { mockApiService.registrarPedido(capture(slotPedido)) }
         assert(slotPedido.captured.idUsuario == 50)
