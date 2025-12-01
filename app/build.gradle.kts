@@ -36,6 +36,9 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -62,17 +65,8 @@ dependencies {
     implementation("androidx.media3:media3-exoplayer-dash:1.4.1")
     implementation("androidx.media3:media3-extractor:1.4.1")
 
-    // Viejo ExoPlayer (Solo si es estrictamente necesario, si no, bórralo)
+    //ExoPlayer
     implementation("com.google.android.exoplayer:exoplayer:2.19.1")
-
-    // --- PRUEBAS UNITARIAS ---
-    // Quitamos duplicados que ya estaban en 'libs' si existen, dejamos los manuales seguros
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("org.mockito:mockito-core:5.3.1")
-    testImplementation("org.mockito:mockito-inline:5.2.0")
-    testImplementation("org.mockito.kotlin:mockito-kotlin:5.1.0")
-    testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
-    testImplementation(kotlin("test"))
 
     // --- PRUEBAS DE INSTRUMENTACIÓN ---
     // Usamos las versiones del catálogo (libs) para evitar conflictos de versiones duplicadas
@@ -108,10 +102,7 @@ dependencies {
     // --- PRUEBAS UNITARIAS ---
     // Quitamos duplicados que ya estaban en 'libs' si existen, dejamos los manuales seguros
     testImplementation("junit:junit:4.13.2")
-    testImplementation("org.mockito:mockito-core:5.3.1")
-    testImplementation("org.mockito:mockito-inline:5.2.0")
-    testImplementation("org.mockito.kotlin:mockito-kotlin:5.1.0")
-    testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
+    testImplementation("io.mockk:mockk:1.13.8")
     testImplementation(kotlin("test"))
 
     // --- PRUEBAS DE INSTRUMENTACIÓN ---
