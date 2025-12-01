@@ -23,7 +23,7 @@ class HistorialPresenter (private val view: HistorialContract.View, private val 
     private val apiService: ifaceApiService
 
     init {
-        // Configuración de Retrofit (similar a tus otros presenters)
+        // Configuración de Retrofit
         val logging = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
@@ -51,8 +51,8 @@ class HistorialPresenter (private val view: HistorialContract.View, private val 
                 if (response.isSuccessful && response.body() != null) {
                     val listaRespuesta = response.body()!!
 
-                    // TRUCO: Convertimos la respuesta del API a 'ItemCarrito' para poder
-                    // reutilizar el mismo Adaptador que ya tienes.
+                    // Convertimos la respuesta del API a 'ItemCarrito' para poder
+                    // reutilizar el mismo Adaptador que ya se tiene.
                     val listaConvertida = listaRespuesta.map { itemApi ->
                         // Reconstruimos el producto
                         val productoReconstruido = tblProductos(
@@ -110,7 +110,7 @@ class HistorialPresenter (private val view: HistorialContract.View, private val 
             items = listaItemsParaEnviar
         )
 
-        // 4. ENVIAR (Ahora enviamos 'peticionCompleta')
+        // 4. ENVIAR ('peticionCompleta')
         apiService.registrarPedido(peticionCompleta).enqueue(object : Callback<clsDatosRespuestaH> {
             // ... (El resto del onResponse y onFailure sigue IGUAL que en la respuesta anterior) ...
             override fun onResponse(call: Call<clsDatosRespuestaH>, response: Response<clsDatosRespuestaH>) {

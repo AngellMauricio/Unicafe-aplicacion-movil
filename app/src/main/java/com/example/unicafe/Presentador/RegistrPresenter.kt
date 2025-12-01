@@ -8,7 +8,7 @@ private val vista: RegistroContrac,
 private val model: RegistroModel
 ) {
     fun registrarUsuario(nombreUsuario: String, email: String, password: String, telefono: String) {
-        // Pásalo al modelo
+        // se pasa al modelo
         model.registrarUsuario(nombreUsuario, email, password, telefono, object : RegistroModel.OnRegistroListener {
             override fun onSuccess(message: String) {
                 vista.mostrarMensaje(message)

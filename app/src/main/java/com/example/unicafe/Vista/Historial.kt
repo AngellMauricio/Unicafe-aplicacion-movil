@@ -41,20 +41,20 @@ class Historial : AppCompatActivity(), HistorialContract.View {
         rcvHistorial.layoutManager = LinearLayoutManager(this)
 
 
-        // 1. VERIFICAR MODO
+        //VERIFICAR MODO
         esModoAdmin = intent.getBooleanExtra("MODO_ADMIN", false)
         idClienteVer = intent.getIntExtra("ID_CLIENTE_A_VER", -1)
 
         if (esModoAdmin && idClienteVer != -1) {
-            // --- MODO ADMIN (SOLO LECTURA) ---
-            btnRealizarPedido.visibility = View.GONE // Ocultar botón de comprar
+            //MODO ADMIN
+            btnRealizarPedido.visibility = View.GONE // Oculta el botón de comprar
             tvTotalPedido.text = "Cargando historial del cliente..."
 
             // Pedir datos al servidor
             presenter.cargarHistorialDeUsuario(idClienteVer)
 
         } else {
-            // --- MODO CLIENTE (CARRITO) ---
+            //MODO CLIENTE
             // Mostrar datos locales del carrito
             mostrarListaHistorial(CarritoManager.itemsCarrito)
 
