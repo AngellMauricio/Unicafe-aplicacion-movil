@@ -6,8 +6,8 @@ import com.example.unicafe.Vista.Contract.LoginContrac
 import kotlin.collections.firstOrNull
 import kotlin.text.isEmpty
 
-class LoginPresenter(private val vista: LoginContrac) {
-    private val model = LoginModel()
+class LoginPresenter(private val vista: LoginContrac, private val model: LoginModel = LoginModel()) {
+
 
     fun iniciarSesion(email: String, password: String) {
         if (email.isEmpty() || password.isEmpty()) {
