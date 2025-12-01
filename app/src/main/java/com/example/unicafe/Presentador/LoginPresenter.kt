@@ -21,16 +21,15 @@ class LoginPresenter(private val vista: LoginContrac, private val model: LoginMo
             } else if (datos != null && datos.firstOrNull()?.Estado == "Correcto") {
                 val user = datos.firstOrNull()
                 val id = user?.user_id
-                val rol = user?.rol_id ?: 3 // Por defecto cliente si es nulo
+                val rol = user?.rol_id ?: 3
 
                 if (id != null) {
                     vista.guardarUsuarioSesion(id, rol)
 
-                    // LÓGICA DE ROLES
                     if (rol == 3) {
-                        vista.navegarACliente() // Cliente
+                        vista.navegarACliente()
                     } else if (rol == 1 || rol == 2) {
-                        vista.navegarAAdmin()   // Admin/Empleado
+                        vista.navegarAAdmin()
                     } else {
                         vista.mostrarMensaje("Rol desconocido")
                     }

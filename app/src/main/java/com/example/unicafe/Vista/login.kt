@@ -36,7 +36,7 @@ class login : AppCompatActivity(), LoginContrac {
                     msg = "Fallo al suscribirse a notificaciones"
                 }
                 Log.d("FCM_SUSCRIPCION", msg)
-                //Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+
             }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -69,7 +69,7 @@ class login : AppCompatActivity(), LoginContrac {
         val sharedPref = getSharedPreferences("MiAppPreferenciasGlobales", MODE_PRIVATE)
         val editor = sharedPref.edit()
         editor.putInt("user_id", user_id)
-        editor.putInt("rol_id", rol_id) // Guardamos el rol por si acaso
+        editor.putInt("rol_id", rol_id)
         editor.apply()
     }
 
@@ -79,7 +79,7 @@ class login : AppCompatActivity(), LoginContrac {
     }
 
     override fun navegarAAdmin() {
-        startActivity(Intent(this, PedidosAdmin::class.java)) // La nueva activity
+        startActivity(Intent(this, PedidosAdmin::class.java))
         finish()
     }
 }

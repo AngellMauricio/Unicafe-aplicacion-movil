@@ -23,7 +23,6 @@ class HistorialPresenter (private val view: HistorialContract.View, private val 
     private val apiService: ifaceApiService
 
     init {
-        // Configuración de Retrofit (similar a tus otros presenters)
         val logging = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
@@ -34,7 +33,7 @@ class HistorialPresenter (private val view: HistorialContract.View, private val 
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://unicafe.grupoctic.com/appMovil/api/") // Tu URL base
+            .baseUrl("https://unicafe.grupoctic.com/appMovil/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()
@@ -51,10 +50,8 @@ class HistorialPresenter (private val view: HistorialContract.View, private val 
                 if (response.isSuccessful && response.body() != null) {
                     val listaRespuesta = response.body()!!
 
-                    // TRUCO: Convertimos la respuesta del API a 'ItemCarrito' para poder
-                    // reutilizar el mismo Adaptador que ya tienes.
                     val listaConvertida = listaRespuesta.map { itemApi ->
-                        // Reconstruimos el producto
+
                         val productoReconstruido = tblProductos(
                             idProducto = itemApi.idProducto,
                             nombre = itemApi.nombre,
@@ -62,11 +59,11 @@ class HistorialPresenter (private val view: HistorialContract.View, private val 
                             precio = itemApi.precio,
                             imagenProdc = itemApi.imagenProdc
                         )
-                        // Creamos el ItemCarrito
+
                         ItemCarrito(productoReconstruido, itemApi.cantidad)
                     }
 
-                    // Enviamos la lista convertida a la vista
+
                     view.mostrarListaHistorial(listaConvertida)
 
                 } else {
@@ -84,7 +81,7 @@ class HistorialPresenter (private val view: HistorialContract.View, private val 
         view.mostrarCarga()
 
         val sharedPref = context.getSharedPreferences("MiAppPreferenciasGlobales", Context.MODE_PRIVATE)
-        // Usamos LA MISMA clave que en login.kt ("user_id")
+
         val idUsuarioActual = sharedPref.getInt("user_id", -1)
 
 
@@ -94,7 +91,7 @@ class HistorialPresenter (private val view: HistorialContract.View, private val 
             return
         }
 
-        // 2. TRANSFORMAR LA LISTA DE ÍTEMS (Igual que antes)
+
         val listaItemsParaEnviar = listaCarrito.map { itemCarrito ->
             ItemPedido(
                 idProducto = itemCarrito.producto.idProducto,
@@ -104,15 +101,13 @@ class HistorialPresenter (private val view: HistorialContract.View, private val 
             )
         }
 
-        // 3. CREAR EL OBJETO DE PETICIÓN COMPLETO
         val peticionCompleta = PedidoRe(
             idUsuario = idUsuarioActual,
             items = listaItemsParaEnviar
         )
 
-        // 4. ENVIAR (Ahora enviamos 'peticionCompleta')
         apiService.registrarPedido(peticionCompleta).enqueue(object : Callback<clsDatosRespuestaH> {
-            // ... (El resto del onResponse y onFailure sigue IGUAL que en la respuesta anterior) ...
+
             override fun onResponse(call: Call<clsDatosRespuestaH>, response: Response<clsDatosRespuestaH>) {
                 view.ocultarCarga()
                 if (response.isSuccessful) {

@@ -31,7 +31,6 @@ class Historial : AppCompatActivity(), HistorialContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_historial)
 
-        // Inicializar vistas
         rcvHistorial = findViewById(R.id.rcvHistorial)
         tvTotalPedido = findViewById(R.id.txtTotal)
         btnRealizarPedido = findViewById(R.id.btnRealizarPedido)
@@ -41,21 +40,16 @@ class Historial : AppCompatActivity(), HistorialContract.View {
         rcvHistorial.layoutManager = LinearLayoutManager(this)
 
 
-        // 1. VERIFICAR MODO
         esModoAdmin = intent.getBooleanExtra("MODO_ADMIN", false)
         idClienteVer = intent.getIntExtra("ID_CLIENTE_A_VER", -1)
 
         if (esModoAdmin && idClienteVer != -1) {
-            // --- MODO ADMIN (SOLO LECTURA) ---
-            btnRealizarPedido.visibility = View.GONE // Ocultar botón de comprar
+            btnRealizarPedido.visibility = View.GONE
             tvTotalPedido.text = "Cargando historial del cliente..."
 
-            // Pedir datos al servidor
             presenter.cargarHistorialDeUsuario(idClienteVer)
 
         } else {
-            // --- MODO CLIENTE (CARRITO) ---
-            // Mostrar datos locales del carrito
             mostrarListaHistorial(CarritoManager.itemsCarrito)
 
             btnRealizarPedido.setOnClickListener {
@@ -73,13 +67,10 @@ class Historial : AppCompatActivity(), HistorialContract.View {
         adaptador.notifyDataSetChanged()
     }
 
-
-    // Esta función sirve tanto para mostrar el carrito local como el historial remoto
     override fun mostrarListaHistorial(lista: List<ItemCarrito>) {
         adaptador = HistorialAdapter(this, lista)
         rcvHistorial.adapter = adaptador
 
-        // Calcular y mostrar total
         var total = 0.0
         for (item in lista) {
             total += item.subtotal
@@ -106,7 +97,7 @@ class Historial : AppCompatActivity(), HistorialContract.View {
 
     override fun mostrarExito(mensaje: String) {
         Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
-        // Solo limpiamos si es una compra real, no si estamos viendo historial
+
         if (!esModoAdmin) {
             CarritoManager.limpiarCarrito()
             mostrarListaHistorial(CarritoManager.itemsCarrito)
@@ -119,7 +110,7 @@ class Historial : AppCompatActivity(), HistorialContract.View {
 
     override fun onResume() {
         super.onResume()
-        // Solo refrescamos el carrito local automáticamente
+
         if (!esModoAdmin && ::adaptador.isInitialized) {
             mostrarListaHistorial(CarritoManager.itemsCarrito)
         }

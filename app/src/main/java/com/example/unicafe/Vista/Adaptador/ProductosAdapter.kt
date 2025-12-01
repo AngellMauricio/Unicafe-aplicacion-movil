@@ -44,9 +44,7 @@ class ProductosAdapter(val contexto: Context, val listaProductos: List<tblProduc
         }
 
         holder.btnOrdena.setOnClickListener {
-            // Agregamos al singleton
             CarritoManager.agregarProducto(producto)
-            // Feedback visual
             Toast.makeText(contexto, "${producto.nombre} agregado al pedido", Toast.LENGTH_SHORT).show()
             mostrarHistorial(producto)
         }

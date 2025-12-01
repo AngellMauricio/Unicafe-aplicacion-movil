@@ -21,9 +21,8 @@ class PedidosAdmin : AppCompatActivity(), PedidosAdminContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pedidos) // Usamos tu XML existente
+        setContentView(R.layout.activity_pedidos)
 
-        // CORRECCIÓN: Usamos el ID nuevo que pusimos en el XML
         rcvPedidos = findViewById(R.id.rcvPedidosAdmin)
 
         btnRefrescar = findViewById(R.id.btnRefrescar)
@@ -38,7 +37,6 @@ class PedidosAdmin : AppCompatActivity(), PedidosAdminContract.View {
     }
 
     override fun mostrarUsuarios(lista: List<clsUsuarioPedido>) {
-        // DEBUG: Imprimir tamaño de la lista
         android.util.Log.d("PedidosAdmin", "Recibidos ${lista.size} usuarios")
 
         val adapter = PedidosAdminAdapter(lista) { usuario ->

@@ -13,7 +13,6 @@ object CarritoManager {
         }
     }
 
-    // Función para calcular el total de todo el pedido
     fun obtenerTotalPedido(): Double {
         var total = 0.0
         for (item in itemsCarrito) {
