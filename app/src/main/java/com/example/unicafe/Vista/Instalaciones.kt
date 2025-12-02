@@ -19,6 +19,8 @@ class Instalaciones : AppCompatActivity() , InstalacionesContract {
     private lateinit var rcvInstalaciones: RecyclerView
     private lateinit var presenter: InstalacionesPresenter
 
+    private var adapter: VideosAdapter? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,11 +32,7 @@ class Instalaciones : AppCompatActivity() , InstalacionesContract {
             insets
         }
 
-        // Encontrar el RecyclerView.
-        // NOTA: Asegúrate de ponerle android:id="@+id/rcvInstalaciones" en tu XML activity_instalaciones.xml
-        // Por ahora lo buscaré por tipo si no tiene ID, pero mejor ponle ID.
-        // Asumiré que le pusiste el ID: rcvInstalaciones
-        rcvInstalaciones = findViewById(R.id.rcvInstalaciones) // <--- Agrega este ID en tu XML
+        rcvInstalaciones = findViewById(R.id.rcvInstalaciones)
         rcvInstalaciones.layoutManager = LinearLayoutManager(this)
 
         presenter = InstalacionesPresenter(this)
@@ -42,11 +40,21 @@ class Instalaciones : AppCompatActivity() , InstalacionesContract {
     }
 
     override fun mostrarVideos(videos: List<tblVideos>) {
-        val adapter = VideosAdapter(this, videos)
+        adapter = VideosAdapter(this, videos)
         rcvInstalaciones.adapter = adapter
     }
 
     override fun mostrarError(mensaje: String) {
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        adapter?.liberarReproductores()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        adapter?.liberarReproductores()
     }
 }
