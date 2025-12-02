@@ -20,10 +20,33 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvProductos"
-        android:layout_width="410dp"
-        android:layout_height="613dp"
+        android:layout_width="409dp"
+        android:layout_height="541dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgProductos" />
+
+    <LinearLayout
+        android:layout_width="405dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rcvProductos">
+
+        <Button
+            android:id="@+id/btnInstalaciones"
+            android:layout_width="331dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="#6D4C41"
+            android:text="@string/btnInstalaciones" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

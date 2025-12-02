@@ -1,5 +1,6 @@
 package com.example.unicafe.Vista
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
@@ -18,6 +19,7 @@ import com.example.unicafe.Vista.Contract.ProductosContract
 class Productos : AppCompatActivity(), ProductosContract {
     private lateinit var rcvProductos: RecyclerView
     private lateinit var presenter : ProductosPresenter
+    private lateinit var btnInstalaciones: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,10 +33,15 @@ class Productos : AppCompatActivity(), ProductosContract {
 
         rcvProductos = findViewById(R.id.rcvProductos)
         rcvProductos.layoutManager = LinearLayoutManager(this)
+        btnInstalaciones = findViewById(R.id.btnInstalaciones)
 
         presenter = ProductosPresenter(this)
         presenter.obtenerProductos()
 
+        btnInstalaciones.setOnClickListener {
+            val intent = Intent(this, Instalaciones::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun mostrarProductos(productos: List<tblProductos>) {

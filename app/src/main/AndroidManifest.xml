@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:usesCleartextTraffic">
         <activity
+            android:name=".Vista.Instalaciones"
+            android:exported="false" />
+        <activity
             android:name=".Vista.menu"
             android:exported="false" />
         <activity
@@ -24,13 +27,12 @@
         <activity
             android:name=".Vista.Productos"
             android:exported="false" />
-
         <activity
             android:name=".Vista.Historial"
             android:exported="false" />
         <activity
             android:name=".Vista.PedidosAdmin"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".Vista.login"
             android:exported="true">
@@ -40,6 +42,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service
             android:name=".MyFirebaseMessagingService"
             android:exported="false">

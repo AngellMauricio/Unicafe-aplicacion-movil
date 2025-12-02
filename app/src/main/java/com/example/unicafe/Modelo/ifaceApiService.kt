@@ -12,6 +12,8 @@ import retrofit2.http.Query
 
 interface ifaceApiService {
 
+    @GET("apiObtenerVideos.php")
+    fun obtenerVideos(): Call<List<tblVideos>>
     @GET("apiObtenerPedidosUsuario.php")
     fun obtenerPedidosPorUsuario(
         @Query("idUsuario") idUsuario: Int
