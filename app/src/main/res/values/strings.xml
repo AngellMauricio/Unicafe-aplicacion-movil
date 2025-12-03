@@ -40,5 +40,7 @@
     <string name="imgPedidos">Pedidos</string>
     <string name="btnInstalaciones">Instalaciones</string>>
     <string name="txtInstalaciones">Visitanos!!!, ven y conoce nuestras instalaciones, te esperamos</string>
+    <string name="btnSalir">Cerrar sesion</string>
+
 
 </resources>

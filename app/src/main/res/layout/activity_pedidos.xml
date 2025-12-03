@@ -28,6 +28,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logopedidos" />
 
+    <Button
+        android:id="@+id/btnSalirAdmin"
+        android:layout_width="139dp"
+        android:layout_height="38dp"
+        android:backgroundTint="#6D4C41"
+        android:text="@string/btnSalir"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvPedidosAdmin"
         android:layout_width="409dp"

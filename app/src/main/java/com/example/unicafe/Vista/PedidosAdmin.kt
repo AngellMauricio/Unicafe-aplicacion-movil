@@ -1,5 +1,6 @@
 package com.example.unicafe.Vista
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -18,14 +19,15 @@ class PedidosAdmin : AppCompatActivity(), PedidosAdminContract.View {
     private lateinit var rcvPedidos: RecyclerView
     private lateinit var btnRefrescar: Button
     private lateinit var presenter: PedidosAdminPresenter
+    private lateinit var btnSalir : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pedidos)
 
         rcvPedidos = findViewById(R.id.rcvPedidosAdmin)
-
         btnRefrescar = findViewById(R.id.btnRefrescar)
+        btnSalir = findViewById(R.id.btnSalirAdmin)
 
         rcvPedidos.layoutManager = LinearLayoutManager(this)
         presenter = PedidosAdminPresenter(this)
@@ -34,8 +36,21 @@ class PedidosAdmin : AppCompatActivity(), PedidosAdminContract.View {
         btnRefrescar.setOnClickListener {
             presenter.cargarPedidos()
         }
+        btnSalir.setOnClickListener {
+            cerrarSesion()
+        }
     }
 
+    fun cerrarSesion() {
+        val editor = getSharedPreferences("MiAppPreferenciasGlobales", Context.MODE_PRIVATE).edit()
+        editor.clear()
+        editor.apply()
+
+        val intent = Intent(this, login::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
+    }
     override fun mostrarUsuarios(lista: List<clsUsuarioPedido>) {
         android.util.Log.d("PedidosAdmin", "Recibidos ${lista.size} usuarios")
 

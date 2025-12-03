@@ -49,7 +49,7 @@ class login : AppCompatActivity(), LoginContrac {
         tvRegistrar = findViewById(R.id.txtRegistrar)
 
         presentador = LoginPresenter(this)
-
+        verificarSesionYRedirigir()
         btnAcceder.setOnClickListener {
             val email = etEmail.text.toString()
             val password = etPassword.text.toString()
@@ -60,7 +60,39 @@ class login : AppCompatActivity(), LoginContrac {
             startActivity(Intent(this, registro::class.java))
         }
     }
+    private fun verificarSesionYRedirigir() {
+        val sharedPref = getSharedPreferences("MiAppPreferenciasGlobales", MODE_PRIVATE)
+        val userId = sharedPref.getInt("user_id", -1)
+        val rolId = sharedPref.getInt("rol_id", -1)
 
+        // Si hay sesión iniciada
+        if (userId != -1) {
+            if (rolId == 3) {
+                // CASO CLIENTE
+                val intentProductos = Intent(this, Productos::class.java)
+
+                // Limpiar la pila para evitar bucles
+                intentProductos.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+                // --- CORRECCIÓN AQUÍ ---
+                // Verificamos si el Intent que abrió este Login trae la orden de abrir detalle
+                // Usamos 'this.intent' para asegurarnos de leer el intent de la Actividad
+                if (this.intent.getBooleanExtra("abrir_detalle", false)) {
+                    intentProductos.putExtras(this.intent) // Copiamos todos los datos (ID, nombre, etc.)
+                }
+
+                startActivity(intentProductos)
+                finish()
+            } else {
+                // CASO ADMIN
+                val intentAdmin = Intent(this, PedidosAdmin::class.java)
+                intentAdmin.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+                startActivity(intentAdmin)
+                finish()
+            }
+        }
+    }
     override fun mostrarMensaje(mensaje: String) {
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
     }
