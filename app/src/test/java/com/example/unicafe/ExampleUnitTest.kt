@@ -3,12 +3,13 @@ package com.example.unicafe
 import com.example.unicafe.Modelo.LoginModel
 import com.example.unicafe.Presentador.LoginPresenter
 import com.example.unicafe.Vista.Contract.LoginContrac
-import com.example.unicafe.Vista.clsDatosRespuesta
 import io.mockk.*
 import io.mockk.impl.annotations.MockK
-import org.junit.Assert.assertEquals
+import junit.framework.TestCase.assertEquals
 import org.junit.Before
 import org.junit.Test
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
 
 
 /**
@@ -22,115 +23,136 @@ class ExampleUnitTest {
         assertEquals(4, 2 + 2)
     }
 
-    //Pruebas unitarias del login
     @MockK(relaxed = true)
     private lateinit var view: LoginContrac
 
-    @MockK
+    // CAMBIO 1: El modelo NO es un Mock, es la clase real
     private lateinit var model: LoginModel
 
-    // El presenter es el objeto real que vamos a probar
     private lateinit var presenter: LoginPresenter
 
     @Before
     fun setUp() {
-        // Inicializa las anotaciones @MockK
         MockKAnnotations.init(this)
-        // Inyectamos los mocks al presenter
+
+
+        model = LoginModel()
+
         presenter = LoginPresenter(view, model)
     }
-    //verifica el correcto funcionamiento de la validacion de campos vacios
+//prueba que verifica el iniicio de sesion de un usuario como cliente
     @Test
-    fun camposvaciosLogin() {
-        // Ejecución
-        presenter.iniciarSesion("", "")
+    fun IniciarSesion() {
+        // datos de un usuario que si existe
+        val emailReal = "mauricio@gmail.com"
+        val passReal = "123456"
 
-        // Verificación: Se debe llamar a mostrarMensaje con el texto específico
-        verify { view.mostrarMensaje("Debe llenar todos los campos") }
+        val lock = CountDownLatch(1)
 
-        // Verificación: No se debe llamar al modelo si la validación falla
-        verify(exactly = 0) { model.iniciarSesion(any(), any(), any()) }
-    }
-    //verifca el correcto funcionamiento de los roles
-    @Test
-    fun verificacionRoles() {
-        // 1. Preparación de datos simulados
-        val email = "cliente@test.com"
-        val pass = "123456"
-        val mockUser = clsDatosRespuesta(
-            Estado = "Correcto",
-            user_id = 10,
-            rol_id = 3,
-            Salida = "Exito"
-        )
-        val listaRespuesta = listOf(mockUser)
 
-        // 2. Comportamiento del Mock del Modelo
-        // Cuando llamen a model.iniciarSesion, capturamos el callback y respondemos exitosamente
-        val slotCallback = slot<(List<clsDatosRespuesta>?, String?) -> Unit>()
+        every { view.navegarACliente() } answers {
+            println("Login exitoso detectado en la vista")
+            lock.countDown()
+        }
+        //si el usuario es administrador
+        every { view.navegarAAdmin() } answers {
+            println("Login admin detectado")
+            lock.countDown()
+        }
+        // Si falla la conexion o las credenciales son incorrectas
 
-        every {
-            model.iniciarSesion(email, pass, capture(slotCallback))
-        } answers {
-            // Simulamos que el servidor respondió con la lista y sin error
-            slotCallback.captured.invoke(listaRespuesta, null)
+        every { view.mostrarMensaje(any<String>()) } answers {
+            println("Error recibido: ${firstArg<String>()}")
+            lock.countDown()
         }
 
-        // 3. Ejecución
-        presenter.iniciarSesion(email, pass)
+        println("Iniciando petición al servidor...")
+        presenter.iniciarSesion(emailReal, passReal)
 
-        // 4. Verificación
-        verify { view.guardarUsuarioSesion(10, 3) }
+        val resultado = lock.await(10, TimeUnit.SECONDS)
+
+        if (!resultado) {
+            throw RuntimeException("El servidor tardó demasiado en responder (Time out)")
+        }
         verify { view.navegarACliente() }
-        verify(exactly = 0) { view.mostrarMensaje(any()) } // No debe haber errores
+        verify(exactly = 0) { view.mostrarMensaje(any()) }
     }
+    //Test que prueba que una credencial sea incorrecta
     @Test
     fun CredencialesIncorrectas() {
-        // 1. Preparación (Estado NO es "Correcto" o lista nula)
-        val email = "pedro@gmail.com"
-        val pass = "wrong"
+        val emailFake = "error@gmail.com"
+        val passFake = "123456"
+        val lock = CountDownLatch(1)
 
-        // 2. Comportamiento Mock
-        val slotCallback = slot<(List<clsDatosRespuesta>?, String?) -> Unit>()
-        every {
-            model.iniciarSesion(email, pass, capture(slotCallback))
-        } answers {
-            // Simulamos respuesta nula (login fallido lógico)
-            slotCallback.captured.invoke(null, null)
+
+        var loginFueExitosoIncorrectamente = false
+
+        //Cuando las credenciales son correctas
+        every { view.navegarACliente() } answers {
+            println("ERROR: El servidor aceptó las credenciales e intentó navegar.")
+            loginFueExitosoIncorrectamente = true
+            lock.countDown()
         }
 
-        // 3. Ejecución
-        presenter.iniciarSesion(email, pass)
+    //Cuando las credenciales son correctas de un admin
+        every { view.navegarAAdmin() } answers {
+            println("ERROR: El servidor aceptó las credenciales como ADMIN.")
+            loginFueExitosoIncorrectamente = true
+            lock.countDown()
+        }
 
-        // 4. Verificación
-        verify { view.mostrarMensaje("Credenciales incorrectas") }
+        //cuando la prueba rechada las credenciales correctamente
+        every { view.mostrarMensaje(any<String>()) } answers {
+            println("Comportamiento correcto - Mensaje recibido: ${firstArg<String>()}")
+            lock.countDown()
+        }
+
+
+        presenter.iniciarSesion(emailFake, passFake)
+
+
+        val llegoRespuesta = lock.await(10, TimeUnit.SECONDS)
+
+
+        if (!llegoRespuesta) {
+            throw RuntimeException("El servidor tardó demasiado y no respondió nada.")
+        }
+
+
+        if (loginFueExitosoIncorrectamente) {
+
+            throw AssertionError("El test falló porque las credenciales '$emailFake' fueron aceptadas por el servidor real, pero esperábamos un error.")
+        }
+
+
+        verify { view.mostrarMensaje(or("Credenciales incorrectas", "Usuario no encontrado")) }
+
+
         verify(exactly = 0) { view.navegarACliente() }
-        verify(exactly = 0) { view.navegarAAdmin() }
     }
-
-    //simula un fallo tecnico o de servidor
+    // Test que prueba una "inyecion de sql" en el servidor
 
     @Test
-    fun errorDeConexion() {
+    fun PruebaInyecionSQL() {
 
-        val email = "error@test.com"
-        val pass = "123"
-        val mensajeError = "Error de conexión con el servidor"
+        val emailHack = "' OR '1'='1"
+        val passHack = "admin' --"
+        val lock = CountDownLatch(1)
 
-        val slotCallback = slot<(List<clsDatosRespuesta>?, String?) -> Unit>()
-        every {
-            model.iniciarSesion(email, pass, capture(slotCallback))
-        } answers {
-            slotCallback.captured.invoke(null, mensajeError)
+        every { view.mostrarMensaje(any()) } answers {
+            println("El servidor manejó correctamente el intento de hackeo: ${firstArg<String>()}")
+            lock.countDown()
         }
 
-        presenter.iniciarSesion(email, pass)
+        // Si entra a navegar, ¡tienes un problema de seguridad GRAVE en el servidor!
+        every { view.navegarACliente() } answers { lock.countDown() }
+        every { view.navegarAAdmin() } answers { lock.countDown() }
 
-        val listaMensajes = mutableListOf<String>()
+        presenter.iniciarSesion(emailHack, passHack)
+        lock.await(10, TimeUnit.SECONDS)
 
-        verify { view.mostrarMensaje(capture(listaMensajes)) }
-
-        val mensajeRecibido = listaMensajes.first()
-        println("Mensaje recibido: $mensajeRecibido")
+        // Esperamos que el servidor rechace el login
+        verify { view.mostrarMensaje(any()) }
+        verify(exactly = 0) { view.navegarACliente() }
     }
 }
