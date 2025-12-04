@@ -48,7 +48,7 @@ class detalleProducto : DialogFragment() {
         val imgDetalle: ImageView = view.findViewById(R.id.ivDetalleImagen)
         val tvNombre: TextView = view.findViewById(R.id.tvDetalleTitulo)
         val tvDesc: TextView = view.findViewById(R.id.tvDetalleDescripcion)
-        val tvPrecio: TextView = view.findViewById(R.id.tvDetalleDescripcion)
+        val tvPrecio: TextView = view.findViewById(R.id.txtPrecioDetalle)
         val btnAgregarCarrito: Button = view.findViewById(R.id.btnOrdenar)
 
         tvNombre.text = nombre
